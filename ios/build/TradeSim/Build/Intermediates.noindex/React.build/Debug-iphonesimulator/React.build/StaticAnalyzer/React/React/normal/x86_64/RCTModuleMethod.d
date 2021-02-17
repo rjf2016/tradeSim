@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTModuleMethod.mm \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTModuleMethod.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTBridgeMethod.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTNullability.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/ricker/Documents/TradeSim/ios/build/TradeSim/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/ricker/Documents/TradeSim/ios/build/TradeSim/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/ricker/Documents/TradeSim/ios/build/TradeSim/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/ricker/Documents/TradeSim/ios/build/TradeSim/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTCxxConvert.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTManagedPointer.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Base/RCTParserUtils.h \
+  /Users/ricker/Documents/TradeSim/node_modules/react-native/React/Profiler/RCTProfile.h

@@ -1,0 +1,26 @@
+// Font Family
+$font: 'Rubik', sans-serif;
+
+// Colors ---------------
+$white: #fff;
+$gray-1: #fafafa;
+$gray-2: #f2f2f2;
+$black-100: rgba(0, 0, 0, 1);
+$black-88: rgba(0, 0, 0, .88);
+$black-64: rgba(0, 0, 0, .64);
+$black-10: rgba(0, 0, 0, .10);
+$black-5: rgba(0, 0, 0, .05);
+$primary-color-1: #234FEB;
+$primary-color-2: #A361FF;
+
+
+
+// Responsive Variables
+$desktop: 'only screen and (min-width: 1400px)';
+$laptop: 'only screen and (min-width: 1200px) and (max-width: 1399px)';
+$lg : 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$md:'only screen and (min-width: 768px) and (max-width: 991px)';
+$xs:'(max-width: 767px)';
+$sm: 'only screen and (min-width: 550px) and (max-width: 767px)';
+
+

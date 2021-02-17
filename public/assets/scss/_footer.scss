@@ -1,0 +1,149 @@
+/* ==========================
+    FOOTER CSS
+============================= */
+
+.footer {
+
+	.cta-section {
+		position: relative;
+		z-index: 1;
+		margin-bottom: -350px;
+
+		.cta-wrapper {
+			background-image: url('../img/cta/cta-bg.svg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			padding: 72px 30px 97px;
+			border-radius: 32px;
+		
+			.cta-content-wrapper {
+		
+				.section-title {
+		
+					span {
+						font-weight: 500;
+						font-size: 44px;
+						color: rgba(255, 255, 255, 0.74);
+
+						@media #{$xs} {
+							font-size: 22px;
+						}
+					}
+					h1 {
+						font-weight: bold;
+						font-size: 52px;
+						line-height: 65px;
+						color: $white;
+
+						@media #{$xs} {
+							font-size: 32px;
+							line-height: 42px;
+						}
+					}
+					p {
+						color: $white;
+						font-size: 20px;
+						line-height: 28px;
+
+						@media #{$xs} {
+							font-size: 16px;
+							line-height: 24px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.footer-content {
+		background-image: url('../img/footer/footer-bg.svg');
+		background-position: top right;
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding-top: 450px;
+
+
+		.widget-wrapper {
+			padding-bottom: 90px;
+
+			@media #{$xs} {
+				padding-bottom: 20px;
+			}
+
+			.footer-widget {
+				margin-bottom: 50px;
+				&.widget-info {
+					@media #{$desktop} {
+						padding-right: 70px;
+					}
+				}
+
+				.logo {
+					margin-bottom: 35px;
+				}
+				h3 {
+					font-weight: 300;
+					color: $white;
+					margin-bottom: 10px;
+				}
+				p {
+					color: $white;
+				}
+				h6 {
+					font-size: 14px;
+					margin-bottom: 16px;
+					font-weight: 600;
+					color: $white;
+				}
+				a {
+					color: $white;
+				}
+				.links {
+					li {
+						a {
+							margin-bottom: 12px;
+						}
+					}
+				}
+				.socials {
+					display: flex;
+
+					li {
+
+						a {
+							color: rgba($white, .64);
+							width: 32px;
+							height: 32px;
+							font-size: 20px;
+							@include flex-center;
+							margin: 4px;
+
+
+							&:hover {
+								color: $white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.copyright-wrapper {
+		padding: 35px 0px;
+		text-align: center;
+
+		p {
+			color: $white;
+
+			a {
+				color: inherit;
+
+				&:hover {
+					color: $primary-color-1;
+				}
+			}
+		}
+	}
+}

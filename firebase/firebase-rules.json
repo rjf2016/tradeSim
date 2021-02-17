@@ -1,0 +1,19 @@
+{
+  "rules": {
+    ".read":"auth.uid != null",
+    ".write":false,
+    "users": {
+      "$uid": {
+        ".write": "$uid == auth.uid"
+      }
+    },
+    "portfolios": {
+      "$uid": {
+        ".write": "$uid == auth.uid"
+      }
+    },
+      "symbols": {
+      ".indexOn": ["uName", "symbol"]
+    }
+  }
+}

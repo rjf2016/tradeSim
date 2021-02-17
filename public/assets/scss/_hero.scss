@@ -1,0 +1,216 @@
+/* ====================
+		HERO CSS
+======================= */
+
+.hero-section {
+	height: 720px;
+	background-color: $gray-1;
+	background-image: url('../img/hero/hero-bg.svg');
+	background-position: left bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	z-index: 1;
+
+	@media #{$md, $xs} {
+		height: auto;
+		padding-top: 150px;
+	}
+
+	.hero-content {
+
+		& span {
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 30px;
+			color: $black-64;
+
+			@media #{$xs} {
+				font-size: 20px;
+			}
+		}
+
+		h1 {
+			font-family: $font;
+			font-weight: 300;
+			font-size: 46px;
+			line-height: 65px;
+			margin-bottom: 20px;
+			color: $black-88;
+
+			& span {
+				font-size: 52px;
+				font-weight: 700;
+				color: $black-88;
+				display: block;
+			}
+
+			@media #{$lg} {
+				font-size: 48px;
+				line-height: 60px;
+			}
+			@media #{$xs} {
+				font-size: 35px;
+				line-height: 44px;
+			}
+			@media #{$sm} {
+				font-size: 42px;
+				line-height: 50px;
+			}
+		}
+
+		& p {
+			font-family: $font;
+			font-weight: 300;
+			font-size: 20px;
+			line-height: 28px;
+			margin-bottom: 30px;
+			color: $black-88;
+
+			@media #{$xs} {
+				font-size: 18px;
+			}
+		}
+
+	}
+
+	.hero-image {
+		padding-top: 150px;
+
+		@media #{$md} {
+			padding-top: 60px;
+		}
+		@media #{$xs} {
+			padding-top: 30px;
+		}
+
+		img {
+			@media #{$xs} {
+				max-width: 100%;
+			}
+		}
+	}
+
+}
+.action-buttons {
+	text-align: center;
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 4px;
+
+		li {
+			margin: 4px;
+
+			.main-btn {
+				background-color: $white;
+				color: $primary-color-1;
+
+				&.border-btn {
+					background: transparent;
+					color: $white;
+
+					&::after {
+						background-color: rgba($white, .1);
+					}
+				}
+			}
+		}
+	}
+
+	& p {
+		font-family: $font;
+		font-size: 14px;
+		color: rgba($white, .74);
+		margin-bottom: 0;
+	}
+}
+
+form.get-started-form {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	
+	label {
+		position: absolute;
+		left: 0;
+		top: 4px;
+		width: 44px;
+		height: 44px;
+		@include flex-center;
+	}
+
+	input {
+		min-width: 275px;
+		padding: 15px 0 15px 45px;
+		border: none;
+		border-bottom: 2px solid $primary-color-1;
+		margin-right: 5px;
+		margin-bottom: 16px;
+		background: transparent;
+	}
+
+	button {
+		margin-bottom: 16px;
+	}
+}
+
+
+/* =======================================
+		ACHIEVEMENT-SECTION CSS
+========================================== */
+
+.clients-section {
+	position: relative;
+	margin-top: -65px;
+	z-index: 1;
+
+	.clients-logo-active-wrapper {
+		background: $white;
+		@include box-shadow(8px 8px 16px rgba(0, 0, 0, 0.16));
+		border-radius: 16px;
+		padding: 32px 37px 37px;
+		position: relative;
+
+		@media #{$xs} {
+			padding: 32px 25px;
+		}
+
+		.section-title {
+			margin-bottom: 22px;
+			
+			span {
+				text-transform: none;
+				font-weight: 600;
+			}
+		}
+
+		.tns-controls {
+			position: absolute;
+			z-index: 2;
+			width: calc(100% - 80px);
+			display: flex;
+			justify-content: space-between;
+			left: 40px;
+			top: 50%;
+
+			@media #{$xs} {
+				width: calc(100% - 30px);
+				left: 15px;
+			}
+
+			button {
+				width: 33px;
+				height: 33px;
+				@include flex-center;
+				border: none;
+				background: none;
+				color: rgba($primary-color-1, 1);
+			}
+		}
+	}
+}

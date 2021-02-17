@@ -1,0 +1,130 @@
+/* ========================
+		TESTIMONIAL CSS
+=========================== */
+
+.testimonial-section {
+	position: relative;
+	overflow: hidden;
+	background-color: $gray-2;
+
+
+	.testimonial-active-wrapper {
+
+		.tns-nav {
+			position: absolute;
+			right: 24px;
+			top: 50%;
+			@include transform(translateY(-50%));
+			z-index: 99;
+
+			@media #{$xs} {
+				top: auto;
+				@include transform(translate(-50%, 0));
+				bottom: 100px;
+				right: auto;
+				left: 50%;
+			}
+
+			button {
+				width: 16px;
+				height: 16px;
+				border-radius: 50%;
+				border: none;
+				background: rgba(0, 0, 0, .38);
+				display: block;
+				margin: 4px 0;
+
+				@media #{$xs} {
+					display: inline-block;
+					margin: 4px;
+				}
+
+				&.tns-nav-active {
+					background: $primary-color-1;
+				}
+			}
+		}
+		.section-title {
+
+			h1 {
+				font-weight: 700;
+			}
+
+		}
+		.single-testimonial {
+
+			@media #{$desktop} {
+				padding-right: 132px;
+			}
+
+			.content {
+
+				p {
+					font-family: $font;
+					font-weight: 300;
+					font-size: 28px;
+					line-height: 35px;
+					margin-bottom: 32px;
+
+					@media #{$xs} {
+						font-size: 20px;
+						line-height: 30px;
+					}
+					@media #{$sm} {
+						font-size: 24px;
+						line-height: 34px;
+					}
+				}
+			}
+
+			.info {
+				margin-bottom: 25px;
+
+				h6 {
+					font-family: $font;
+					font-weight: 500;
+				}
+
+				p {
+					font-weight: 300;
+					color: $black-64;
+				}
+			}
+
+			.video-btn {
+				
+				a {
+					letter-spacing: 0.08em;
+					text-transform: uppercase;
+					color: $primary-color-1;
+					font-weight: 700;
+					font-family: $font;
+
+					i {
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+	}
+
+
+	.testimonial-image {
+		position: absolute;
+		width: 48%;
+		height: 100%;
+		top: 0;
+		right: 0;
+
+		@media #{$md, $xs} {
+			display: none;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: top center;
+		}
+	}
+}

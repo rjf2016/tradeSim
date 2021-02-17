@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>2629C1E2-6F93-46F0-B1C2-82948DC1582A</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2629C1E2-6F93-46F0-B1C2-82948DC1582A.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>TradeSim project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>TradeSim</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project TradeSim with scheme TradeSim and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>585336023.51950896</real>
+			<key>timeStoppedRecording</key>
+			<real>585336024.41210794</real>
+			<key>title</key>
+			<string>Building project TradeSim with scheme TradeSim and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>2629C1E2-6F93-46F0-B1C2-82948DC1582A</string>
+		</dict>
+		<key>B0E8AD66-66BB-42A5-BB97-39AD3FC8AD2F</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>B0E8AD66-66BB-42A5-BB97-39AD3FC8AD2F.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>TradeSim project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>TradeSim</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project TradeSim with scheme TradeSim and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>585350730.30915105</real>
+			<key>timeStoppedRecording</key>
+			<real>585350732.59146404</real>
+			<key>title</key>
+			<string>Building project TradeSim with scheme TradeSim and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>B0E8AD66-66BB-42A5-BB97-39AD3FC8AD2F</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,141 @@
+/* =====================================
+    FEATURE SECTION ONE CSS
+======================================== */
+
+.feature-section-1 {
+  
+  .feature-image-1 {
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .feature-content-wrapper {
+
+    @media #{$md, $xs} {
+      margin-bottom: 100px;
+    }
+
+    .single-feature {
+      display: flex;
+      margin-bottom: 28px;
+
+      .content {
+
+        h4 {
+          margin-bottom: 8px;
+        }
+
+      }
+    }
+  }
+}
+.feature-icon {
+  max-width: 65px;
+  width: 100%;
+  height: 65px;
+  font-size: 48px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+/* =====================================
+    FEATURE SECTION TWO CSS
+======================================== */
+.feature-section-2 {
+  background: rgba($white, .64);
+
+  .feature-content-wrapper {
+
+    @media #{$md, $xs} {
+      margin-bottom: 100px;
+    }
+
+    .section-title {
+      padding-right: 75px;
+    }
+
+    .single-feature {
+      display: flex;
+      margin-bottom: 30px;
+
+      .content {
+        h4 {
+          margin-bottom: 8px;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+
+  .feature-image-2 {
+
+    @media #{$md, $xs} {
+      margin-bottom: 50px;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+}
+
+/* =====================================
+    FEATURE SECTION THREE CSS
+======================================== */
+.feature-section-3 {
+  background-color: #f7f7f7;
+
+  .section-title {
+
+    @media #{$laptop} {
+      padding-left: 100px;
+    }
+  }
+
+  .feature-image-3 {
+
+    @media #{$md, $xs} {
+      margin-top: 50px;
+    }
+
+    img {
+      @media #{$lg, $md, $xs} {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+/* =====================================
+    FEATURE SECTION FOUR CSS
+======================================== */
+
+.feature-section-4 {
+  background-color: #0026D8;
+
+  .feature-image-4 {
+    text-align: center;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .feature-content-wrapper {
+
+    .section-title {
+
+      h1 {
+        color: $white;
+      }
+
+      p {
+        color: $white;
+        font-size: 20px;
+      }
+    }
+  }
+}
