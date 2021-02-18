@@ -33,22 +33,21 @@ export default class NewsScreen extends Component {
   componentDidMount() {
     this.navigationEventListener = Navigation.events().bindComponent(this);
   }
-
   async componentDidAppear() {
-    if (this.state.loading) {
+    if (this.state.loading) 
        this.fetchNews();
-    }
   }
 
   async fetchNews() {
     try {
       const s = this.props.holdingsstore.UniqueSymbols;
       if (s) {
+        // For Testing, keep this commented to avoid market data charges
         const o = await getNewsBySymbol(s);
         this.setState({ data: o, loading: false });
       }
     } catch (err) {
-      console.log("Error Loading News....", err);
+      console.log("Error Market Data", err);
     }
   }
 

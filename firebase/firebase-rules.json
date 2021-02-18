@@ -11,9 +11,6 @@
       "$uid": {
         ".write": "$uid == auth.uid"
       }
-    },
-      "symbols": {
-      ".indexOn": ["uName", "symbol"]
     }
   }
 }

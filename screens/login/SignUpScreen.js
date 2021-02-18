@@ -21,11 +21,13 @@ export default class SignUpScreen extends Component {
     this.onSignUpClick = this.onSignUpClick.bind(this);
   }
 
-  //This function is called from the SignupForm once person presses sign up with
+  //this function is called from the SignupForm once person presses sign up with
   //their email and password.
   onSignUpClick(username, password) {
-    //1. Register with Firebase.   2. Send Confirmation     
+    //1. Register with Firebase
+    //2. Send Confirmation     
     this.props.authstore.signUp(username, password).then((userData) => {
+
       goToLogin();
     }
     ).catch((error) => {

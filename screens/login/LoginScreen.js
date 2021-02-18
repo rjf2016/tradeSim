@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react'
 import { goToSignUp, showForgotPasswordModal } from '../utils/Navigation'
 import { GoogleSigninButton } from 'react-native-google-signin';
 import LoginForm from '../../components/login/LoginForm';
+import SplashScreen from 'react-native-splash-screen';
 
 @inject('authstore')
 @observer
@@ -13,7 +14,6 @@ export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props)
     this.state = {
       authstore: this.props.authstore,
       username: this.props.authstore.user.email,
@@ -31,6 +31,10 @@ export default class LoginScreen extends Component {
     this.onForgotNavigate = this.onForgotNavigate.bind(this);
   }
 
+  componentDidMount() {
+    SplashScreen.hide();
+  }
+  
 onGoogleLoginSetup(){
   this.state.authstore.setupGoogleSignin();
 }

@@ -30,11 +30,12 @@ export default class QuoteDetailScreen extends Component {
       symbol: this.props.symbol,
       company: this.props.company,
       loading: true,
+      selection: '1m', // default
       quoteData: {},
       chartData: [],
       newsData: []
     }
-    
+   this.drawChart.bind(this);
     Navigation.events().bindComponent(this); // <== Will be automatically unregistered when unmounted
   }
 
@@ -43,31 +44,45 @@ export default class QuoteDetailScreen extends Component {
       Navigation.dismissModal(this.props.componentId);
   }
 
-  async componentDidMount() {
+   componentDidMount() {
 
+    this.drawChart('1m', true);
+  }
+
+  async drawChart(timeFrame, shouldGetNewsBySymbol) {
+ 
     try {
       const symbol = this.props.symbol;
       if (symbol) {
         const data = [];
         data.push(getQuote(symbol));
-        data.push(getChart(symbol, '1m', ''));
-        data.push(getNewsBySymbol(symbol));
+        data.push(getChart(symbol, timeFrame, ''));
+
+        if(shouldGetNewsBySymbol)  //conditional to avoid calling for news with each time value change on the chart
+            data.push(getNewsBySymbol(symbol));
+
         const fetchedData = await Promise.all(data);
-        this.setState({ quoteData: fetchedData[0], chartData: fetchedData[1], newsData: fetchedData[2], loading: false });
-      }
+
+        if(shouldGetNewsBySymbol)
+          this.setState({ quoteData: fetchedData[0], chartData: fetchedData[1], newsData: fetchedData[2], loading: false, selection: timeFrame });
+        else
+           this.setState({ quoteData: fetchedData[0], chartData: fetchedData[1], loading: false, selection: timeFrame });
+        }
     } catch (err) {
       console.log("Error Market Data", err);
     }
   }
 
-  render() {    
+ render() {   
+  const data = this.state.chartData;
+
    if(this.state.loading)
      return <View style={styles.container}></View>;
 
     return (
       <ScrollView style={styles.container}>        
         <Quote symbol={this.state.symbol} company={this.state.quoteData.companyName} price={this.state.quoteData.latestPrice} change={this.state.quoteData.change} />
-        <Chart style={styles.chart} chartData={this.state.chartData} />    
+        <Chart style={styles.chart} chartData={data} refDrawChart={this.drawChart.bind(this)} selection={this.state.selection} />    
         <QuoteDetail data={this.state.quoteData} />
         <NewsList data={this.state.newsData} />
       </ScrollView> 

@@ -3,7 +3,6 @@ const fetchData = require('./fetchData');
 async function quote({
   symbol, API_TOKEN, API_URL
 }) {
-  
   if (symbol === undefined) 
     throw new Error('No symbol provided, add symbols as an argument');
   
@@ -23,5 +22,4 @@ async function quote({
     throw error;
   }
 }
-
 module.exports = quote;

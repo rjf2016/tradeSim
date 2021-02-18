@@ -3,6 +3,7 @@ import { View, Text, TextInput, FlatList, TouchableHighlight, Keyboard, StyleShe
 import { observer, inject} from 'mobx-react';
 import { showQuoteDetailModal } from '../utils/Navigation';
 
+@inject('quotesstore')
 @inject('holdingsstore')
 @observer
 export default class QuoteResearchScreen extends Component {
@@ -42,7 +43,8 @@ export default class QuoteResearchScreen extends Component {
    if(!searchText)
      return;
 
-    this.props.holdingsstore.searchForSymbols(searchText)
+   this.props.quotesstore.getSymbols(searchText)
+   // this.props.holdingsstore.searchForSymbols(searchText)
       .then(res => {
         this.setState({
           bestMatches: res,  
@@ -60,7 +62,7 @@ cancelText() {
 
 chosenItem(selectedItem) { 
   this.setState({ bestMatches: [], searchText: '' })
-  showQuoteDetailModal(selectedItem.item.symbol, selectedItem.item.companyName);
+  showQuoteDetailModal(selectedItem.item.symbol, selectedItem.item.securityName);
   Keyboard.dismiss();
 }
 
@@ -97,7 +99,7 @@ render() {
               </View>
               <View style={styles.containerColumn}>
                 <TouchableHighlight onPress={() => this.chosenItem({ item })}>
-                  <Text style={{ color: 'silver', fontFamily: 'Avenir-Black', fontSize: 12, textAlign: 'left', width: '100%' }}>{item['company'].length > 60 ? item['company'].substring(0, 60) + "..." : item['company']}</Text>
+                  <Text style={{ color: 'silver', fontFamily: 'Avenir-Black', fontSize: 12, textAlign: 'left', width: '100%' }}>{item['securityName'].length > 60 ? item['securityName'].substring(0, 60) + "..." : item['securityName']}</Text>
                 </TouchableHighlight>
               </View>
             </View>

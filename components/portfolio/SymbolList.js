@@ -26,6 +26,7 @@ export default class SymbolList extends Component {
     return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
   onPress(symbol) {
+    //this.props.parentReference(symbol, company, quantity);  //call parent to showOrderScreen modal
     this.props.parentReference(symbol);
   }
 
@@ -33,6 +34,7 @@ export default class SymbolList extends Component {
     return (
       <TouchableHighlight>
           <View style={styles.container}>
+            
           <View style={{ width: '90%', height: 24}}>
               <View>
                 <Text style={{ color: 'white', fontFamily: 'Avenir-Black', fontSize: 15, textAlign: 'left', paddingLeft: 10 }}>
@@ -87,8 +89,10 @@ render() {
             extraData={this.state}
           />
       </View>
-    );   
-  } 
+    );
+    
+  }
+  
 }
 
 const styles = StyleSheet.create({

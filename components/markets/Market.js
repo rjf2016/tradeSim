@@ -14,7 +14,7 @@ export default class Market extends Component {
       data: props.data
     }
   }
-
+  
 numberFormat(num) {
     return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
@@ -35,6 +35,7 @@ buildSymbolList(holdings){
         for(var i=0; i<value.length; i++) {
             const sign = value.change >= 0 ? "+" : ""
             const dataType = this.props.showChange ? "" : "%"
+            const color = value[i].change > 0 ? 'green' : value[i].change < 0 ? 'red' : '#252526'
 
               rowArray.push(
                 <View key={this.props.categoryName + "_" + value[i].symbol}>
@@ -46,7 +47,7 @@ buildSymbolList(holdings){
                       <Text style={{ flex: 1, color: 'white', padding: 2, width: 80, fontSize: 13, fontFamily: 'Avenir-Black', fontWeight: 'bold', textAlign: 'right' }}>{value[i].latestPrice}</Text>
                     </View>
                     <TouchableHighlight onPress={() => this.onToggle(this.props.showChange)} >
-                      <View style={[styles.valueChangeText, value[i].change > 0 ? { backgroundColor: 'green', borderRadius: 3 } : { backgroundColor: 'red', borderRadius: 3 }]}>
+                      <View style={[styles.valueChangeText, {backgroundColor: color, borderRadius: 3 }]}>
                         <Text style={{ color: 'white', fontSize: 13, fontFamily: 'Avenir-Black' }}> 
                         {sign}{this.props.showChange ? parseFloat(value[i].change).toFixed(2) : parseFloat(value[i].changePercent*100).toFixed(2)}{dataType}
                       </Text>
@@ -79,6 +80,7 @@ render() {
           </View>
         </View>
     );
+
    }
   }
  
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
   },
   categoryHeader: {
     textAlign: 'left',
-    fontSize: 20,
+    fontSize: 18,
     color: 'white',
     fontFamily: 'Avenir-Black',
     height: 30,

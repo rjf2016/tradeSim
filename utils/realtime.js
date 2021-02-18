@@ -1,7 +1,6 @@
 const fetchData = require('../utils/fetchData');
 const makeQueries = require('../utils/makeQueries');
 const formatOptions = require('../utils/formatOptions');
-import MarketDataAPIURL from '../utils/MarketDataAPIURL';
 
 async function realtime({
   symbols, API_TOKEN, API_URL, options
@@ -20,7 +19,8 @@ async function realtime({
     const queries = await makeQueries(symbols, 5);
    
     for (const query of queries) { 
-       data.push(fetchData(URL, query, optionQuery, API_TOKEN));
+    //  console.log(`${URL}${query}${optionQuery}token=${API_TOKEN}`)
+        data.push(fetchData(URL, query, optionQuery, API_TOKEN));
     }
     return fetchedData = await Promise.all(data);
 

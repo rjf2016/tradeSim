@@ -1,5 +1,4 @@
 const fetchData = require('../utils/fetchData');
-const formatOptions = require('../utils/formatOptions');
 
 async function search({ search_term, API_TOKEN, API_URL, options }) {
   const URL = API_URL + '/stable/search/' + search_term;
@@ -14,7 +13,7 @@ async function search({ search_term, API_TOKEN, API_URL, options }) {
   optionQuery = "?";
 
   try { 
-    const fetchedData = await fetchData(URL, search_term, optionQuery, API_TOKEN);
+    const fetchedData = await fetchData(URL, '', optionQuery, API_TOKEN);
    
     if (fetchedData.message === 'Invalid API Key.') {
       throw new Error('Invalid API Token');

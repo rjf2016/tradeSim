@@ -7,7 +7,7 @@ import { getRealtime } from '../stores/QuotesStore';
 class HoldingsStore {  
   @observable _Portfolios = [];  // Hiearchy of this object: Portfolios->Holdings->TaxLots
   @observable _SymbolPrices = [];  // Holds market data quote information separately for easy lookup
-  @observable _Balances = {};  // Holds the current Market Value plus rate of return (ROR%) information
+  @observable _Balances = {};
   @observable _IsLoading = {loading: true};
   @observable _UniqueSymbols = []; // all unique symbols across every portfolio (used to make the realtime API calls to market data)
   uid = null;
@@ -28,9 +28,8 @@ class HoldingsStore {
 
           //mobx autorun;  will run once after fetchHoldingsPortfolio returns at some point
           this.handler = autorun(() => {
-            if (this.Portfolios.length)  {  
-            
-              console.log("---- Debug: Done Fetching Holdings by Portfolio ----")
+            if (this.Portfolios.length)  {           
+              console.log("---- Debug: Completed FetchHoldingsByPortfolio ----")
               var holdingsSymbols = this.getUniqueHoldingsFromPortfolios(this.Portfolios);
               this.UniqueSymbols = holdingsSymbols;
               if (holdingsSymbols.length) {
@@ -45,10 +44,8 @@ class HoldingsStore {
                  this.handler();  // Disable After running once to avoid expensive API calls (market data pricing)
                  this.IsLoading = { loading: false }
               }
-             } else {
-                    console.log("---- Debug: Empty Portfolio ----")
-                  }
-                })          
+             } 
+            })          
             }
             catch (error) {
                   console.log('Error occurred during mainFetch() call', error);
@@ -71,6 +68,7 @@ async mainFetch() {
   this.IsLoading = {loading: true}
   const holdings = await this.fetchHoldingsByPortfolio();
   const holdingsSymbols = this.UniqueSymbols;
+ 
   this.getRealtimePrices(holdingsSymbols).then(r => {
         this.calculatePerformance();
   })
@@ -82,10 +80,8 @@ async fetchHoldingsByPortfolio() {
 
     return Firebase.database().ref().child('portfolios/' + uid).on('value', (snapshot) => {  
       if (snapshot.val()) {
-        console.log("------  Debug: Firebase Called  ------")
         try {
           const fbData = Object.values(snapshot.val());
-    
           if (fbData === undefined || fbData.length == 0) {
             this.Balances = {};
             return this.Portfolios = portfolios = [];
@@ -93,7 +89,7 @@ async fetchHoldingsByPortfolio() {
    
           portfolios = toJS(fbData);        
           this.Portfolios = fbData;       
-          this.UniqueSymbols = this.getUniqueHoldingsFromPortfolios(fbData);  //unique list of ticker symbols across all portfolios    
+          this.UniqueSymbols = this.getUniqueHoldingsFromPortfolios(fbData);        
         } catch (error) {
           console.log('error occurred!', error);
         }
@@ -132,21 +128,21 @@ async getRealtimePrices(symbollist) {
       });      
   } 
 
-//Calculates Total Gains and Day's Performance for each Portfolio plus a Total (aggregate)
+//Calculates Total Gains and Day's Performance for 'each' Portfolio plus a Total (aggregate)
 //performance across ALL PORTFOLIOS
-//Note: uses simple weighted average unit cost for holdings with multiple taxlots 
+//Note: uses simple weighted average unit cost for holdings with multiple taxlots (i.e. MSFT bought 3 separate dates, different prices)
 calculatePerformance() {   
   if(!this.Portfolios.length || !this.SymbolPrices.length)
    return;
 
   var newArray = [];
-   var totBegMktVal = totEndMktVal = totOrigBegMktVal = 0
+   var totBegMktVal = totEndMktVal = totOrigBegMktVal = 0; 
    Object.entries(this.Portfolios).forEach(entry => {
      const [key, value] = entry;
-      var begMktVal = endMktVal = origBegMktVal = 0;    //origBegMktVal is what you originally paid for a stock
+      var begMktVal = endMktVal = origBegMktVal = 0;    //origBegMktVal = initial cost of stock
       var portfolioId = value.id
 
-     if (value.taxlots) {     
+     if (value.taxlots) {     // if the user entered their positions (Qty, Unit Price), calculate their gains/losses
        var o = toJS(value.taxlots);
        Object.entries(o).forEach(entry => {
             const [key, value] = entry;
@@ -154,7 +150,7 @@ calculatePerformance() {
             const qty = Object.values(r).reduce((r, { quantity }) => r + quantity, 0); //sum the quantities for each symbol
             
             //get weighted average unit cost
-            const unitCost = (Object.values(r).reduce((r, { totalVal }) => r + totalVal, 0) / qty); //sum the quantities for each symbol          
+            const unitCost = (Object.values(r).reduce((r, { totalVal }) => r + totalVal, 0) / qty); //sum the costs for each purchase          
             const p = this.getCurrentPrices(key);
                      
             var open_price = p.calculationPrice == 'close' ? p.previousClose : p.previousClose;
@@ -163,7 +159,7 @@ calculatePerformance() {
             endMktVal = endMktVal + (qty * close_price);
             totBegMktVal = totBegMktVal + (qty * open_price);
             totEndMktVal = totEndMktVal + (qty * close_price);     
-            //Keep track of the original values to use for Total Portfolio Gains or Losses based on original purchase prices
+            //Keep track of the original values to use for Total Portfolio Gains or Losses based on 'original' purchase prices
             origBegMktVal = origBegMktVal + (qty * unitCost);
             totOrigBegMktVal = totOrigBegMktVal + (qty * unitCost);  
        });
@@ -171,10 +167,17 @@ calculatePerformance() {
        var todayPerf = endMktVal <= 0 ? 0 : ((1 - (begMktVal / endMktVal)) * 100).toFixed(2)
        var totalGL = endMktVal <= 0 ? 0 : (endMktVal - origBegMktVal).toFixed(2)
      
-       newArray.push({ id: portfolioId, 
-         performance: { totalPortfolioValue: endMktVal.toFixed(2), todayPerformance: todayPerf, totalGL: totalGL} 
-        })
-        begMktVal = endMktVal = origBegMktVal = 0;
+       newArray.push({
+         id: portfolioId, performance: {
+           totalPortfolioValue: endMktVal.toFixed(2),
+           todayGain: (endMktVal - begMktVal).toFixed(2),
+           todayGainPct: todayPerf,
+           totalGain: totalGL,
+           totalGainPct: (((endMktVal - origBegMktVal) / origBegMktVal) * 100).toFixed(2)
+         }
+       })
+
+      begMktVal = endMktVal = origBegMktVal = 0;  //reset values and move to next symbol held in the portfolio
      }
    });
 
@@ -183,12 +186,21 @@ calculatePerformance() {
 
    newArray.push({id: "Total", performance: { totalPortfolioValue: totEndMktVal.toFixed(2), 
                     todayGain: (totEndMktVal - totBegMktVal).toFixed(2),
-                    todayGainPct: totTodayPerf, totalGain: totalGain,
+                    todayGainPct: totTodayPerf, 
+                    totalGain: totalGain,
                     totalGainPct: (((totEndMktVal - totOrigBegMktVal) / totOrigBegMktVal)*100).toFixed(2)}})
-
    this.Balances = newArray;
  }
 
+getBalances(portfolioId) {
+  try {
+    return this.Balances.find(x => x.id === portfolioId).performance;
+  }
+  catch(error) {
+    console.log('No Balances for this Portfolio: ', error);
+    return null;
+  }
+}
 getShareQuantity(portfolioId, symbol) {
     var qty = 0;
     try {
@@ -247,11 +259,16 @@ deleteSymbols(portfolioId, symbollist) {
 deletePortfolio(portfolioId) {
     Firebase.database().ref('portfolios/' + uid + '/' + portfolioId).remove().then(f => {
       this.main();
-    })
+    }).catch(function (error) {
+      console.log("Portfolio could not be deleted." + error);
+    }); 
   }
 
 updatePortfolioName(portfolioId, portfolioName) { 
-    Firebase.database().ref('portfolios/' + uid + '/' + portfolioId).update({portfolioName: portfolioName});
+    Firebase.database().ref('portfolios/' + uid + '/' + portfolioId).update({portfolioName: portfolioName})
+      .then().catch(function (error) {
+        console.log("Portfolio Name could not be Updated." + error);
+      });
   }
 
 createPortfolio(portfolioName) {  
@@ -261,13 +278,17 @@ createPortfolio(portfolioName) {
       id: postId,
       portfolioName: portfolioName,
       createdAt: new Date().getTime()
-    })
+    }).then().catch(function (error) {
+      console.log("Portfolio could not be Created." + error);
+    }); 
   }
 
 deleteTaxLot(portfolioId, symbol, id) {
      Firebase.database().ref('portfolios/' + uid + '/' + portfolioId + "/taxlots/" + symbol + "/" + id).remove().then(f => {
-       this.calculatePerformance();  //recalculate after deleting a taxlot
-     });
+       this.calculatePerformance();  //recalculate everything
+     }).catch(function (error) {
+       console.log("Delete Tax Lot failed." + error);
+     }); 
   }
   
 addTaxLot(portfolioId, symbol, company, quantity, price, tradeDate) {
@@ -285,56 +306,18 @@ addTaxLot(portfolioId, symbol, company, quantity, price, tradeDate) {
   updatedUserData["holdings/" + symbol] = {quantity: qty, symbol: symbol, company: company, price: 0, sectype:'EQ'};
  
   ref.update(updatedUserData).then( f=> {
-    this.calculatePerformance();  // recalculate after adding a Tax Lot
+    this.calculatePerformance();
   }).catch(function (error) {
-    console.log("Data could not be saved." + error);
+    console.log("Tax Lot data could not be saved." + error);
   }); 
-}
-
-updatePortfolioHolding(portfolioId, symbol, quantity, price, totalValue){
-  const holding = this.Portfolios.find(p => p.id === portfolioId).holdings[symbol];
-
-  var newHolding = holding;
-  newHolding.quantity = quantity;
-  newHolding.price = price;
-  newHolding.totalValue = totalValue;
-  holding[symbol] = newHolding;
-  
-  return holding[symbol];
 }
 
 updateTaxLot(portfolioId, taxlotId, symbol, quantity, price, tradeDate) {
    Firebase.database().ref('portfolios/' + uid + '/' + portfolioId + '/taxlots/' + symbol + "/" + taxlotId).update({
         quantity: quantity, price: price, tradeDate: tradeDate, totalVal: quantity * price}).then(res => {
-          this.calculatePerformance();  // Recalculate after updating a taxlot
+          this.calculatePerformance();
    });
   }
-
-async searchForSymbols(searchText) {
-    var promises = [];
-    var result = [];
-    promises.push(Firebase.database().ref("symbols/" + searchText).once('value'));
-    promises.push(Firebase.database().ref().child("symbols").orderByChild("uName").limitToFirst(15).startAt(searchText).endAt(searchText + "\uf8ff").once('value'));
-    var exactSymbolMatch = '';
-
-    // Wait for all promises to resolve
-    await Promise.all(promises).then(function (res) {
-      if (res[0].val() != null) {
-        exactSymbolMatch = res[0].val().symbol;
-        result.push(res[0].val())
-      }
-
-      if (res[1].val() != null) {
-        res[1].forEach(function (item) {
-          if (exactSymbolMatch != item.key)  //don't re-add the exactMatch symbol if already pushed
-            result.push(item.val());
-        });
-      }
-      return result;
-    });
-    return result;
-  }
-
 
 addSymbols(portfolioId, symbols) {
   var ref = Firebase.database().ref('portfolios/' + uid + '/' + portfolioId + "/");
@@ -407,7 +390,6 @@ addSymbols(portfolioId, symbols) {
     this._Balances = data;
   }
 }
-
 export default new HoldingsStore()
 
 

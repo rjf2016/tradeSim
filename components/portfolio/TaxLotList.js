@@ -9,15 +9,14 @@ export default class TaxLotList extends Component {
 
   constructor(props) {
     super(props);
-
+  
     this.state = {
         appState: AppState.currentState,
         holdingsstore: this.props.holdingsstore,
         portfolioId: this.props.portfolioId,
         taxlots: this.props.taxlots,
         symbol: this.props.symbol,
-        company: this.props.company,
-        buttonPress: true,
+        company: this.props.company
     }
 
      this.renderRow = this.renderRow.bind(this);
@@ -57,13 +56,15 @@ export default class TaxLotList extends Component {
     )
   }
 
-buildTaxLotList(portfolioId, symbol) {
+  buildTaxLotList(portfolioId, symbol) {
     return this.props.holdingsstore.getTaxLots(portfolioId, symbol);
   }
 
-render() {
+  render() {
   const { holdingsstore } = this.state;
-  var taxlots = this.buildTaxLotList(this.props.portfolioId, this.props.symbol);
+
+  let taxlots = this.buildTaxLotList(this.props.portfolioId, this.props.symbol);
+  
   var portfoliolist = holdingsstore.Portfolios;
   var i = portfoliolist.length;
 
@@ -96,10 +97,8 @@ render() {
           </View>
         </TouchableHighlight>
         </View>
-    );
-    
-  }
-  
+    );  
+  } 
 }
 
 const styles = StyleSheet.create({
@@ -113,14 +112,13 @@ const styles = StyleSheet.create({
   },
   flatlistView: {
     width: "100%",
-    backgroundColor: '#000' 
+    backgroundColor: '#000'
   },
   TextViewStyle:
   {
     borderRadius: 5,
     width: 80,
     height: 30
-
   },
   textData: {
     color: 'white', 

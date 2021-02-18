@@ -26,10 +26,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.googleusercontent.apps.270723734218-9qpt8k4ojicevo9c7fp2dt3bhd9q1c7q</string>
+			<string>PLACEHOLDER</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.270723734218-9qpt8k4ojicevo9c7fp2dt3bhd9q1c7q</string>
+				<string>PLACEHOLDER</string>
 			</array>
 		</dict>
 		<dict>
@@ -47,11 +47,11 @@
 	<string>1</string>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
-		<string>https://tradesim.net</string>
-		<string>https://tradesim.net/verify</string>
+		<string>PLACEHOLDER</string>
+		<string>PLACEHOLDER</string>
 	</array>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-8142056705160793~5726065280</string>
+	<string>PLACEHOLDER</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

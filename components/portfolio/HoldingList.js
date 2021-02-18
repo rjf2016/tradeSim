@@ -57,7 +57,7 @@ buildHoldingsList(portfolioId, portfolios) {
   }
 
   renderRow(postKey) {
-    var s = postKey.item["company"]; 
+    var s = postKey.item["company"]; //.length > 18 ? postKey.item["company"].substring(0, 18) + "..." : postKey.item["company"];
     var holdingValue = postKey.item["quantity"] > 0 ? this.formatNumber(postKey.item["quantity"] * postKey.item["latestPrice"].latestPrice) :
       " - "
     return (
@@ -112,6 +112,7 @@ render() {
             refreshControl={
               <RefreshControl
                 refreshing={this.state.isRefreshing}
+                //onRefresh={this.onRefreshList.bind(this)}
               />
             }
           />

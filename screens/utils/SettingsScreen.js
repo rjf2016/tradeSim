@@ -108,8 +108,10 @@ export default class SettingsScreen extends Component {
             ios_backgroundColor="#3e3e3e"
             onValueChange={(value) => this.onChangeFunction({ isEnabled: value })}
             value={this.state.isEnabled}
-          />         
-        </View>       
+          />
+          
+        </View>
+        
       </View>     
     )
   }
