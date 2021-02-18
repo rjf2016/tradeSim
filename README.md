@@ -16,7 +16,7 @@ The project was created using React Native, MobX, Firebase and iexCloud.io for M
 ### Setup Firebase
 Create a new firebase project [here](https://console.firebase.google.com/) and set up an iOS or Android project with a bundleID. Download the cooresponding `plist` or `json` files.  
 
-Update the stores/SettingsStore.js file with your own FireBase config data.
+Update the stores/SettingsStore.js file with your own firebase config data.
 
 Copy `GoogleService-Info.plist` to overwrite the placeholder file in the `ios` folder.
 
@@ -43,7 +43,7 @@ npm install
 
 ### Register at iexCloud - for real-time Market Data API keys (Sandbox and Production)
 Start for free at iexCloud.io [here](https://iexCloud.io/)!
-Add your iexCloud API keys to your 'user' hive in Firebase (please don't share!)  
+Add your iexCloud API keys to your 'user' hive in Firebase (please don't share your API keys!)  
 "iexData" : {
         "iexDevURL" : "https://sandbox.iexapis.com",
         "iexProdURL" : "https://cloud.iexapis.com",
