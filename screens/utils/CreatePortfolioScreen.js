@@ -48,7 +48,7 @@ render() {
           <TextInput
             style={{ width: 200, height: 22, fontSize: 20, borderRadius: 5, color: 'white', backgroundColor: '#252526', fontFamily: 'Avenir-Black', fontWeight: 'bold' }}
             placeholder="Name your portfolio"
-            autoFocus={false}  
+            autoFocus={false}   // this will auto-launch the keyboard
             placeholderTextColor='grey'
             keyboardType={'default'}
             onChangeText={text => this.handleChange(text)}
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "center",
     fontFamily: 'Avenir-Black'
+    //textTransform: "uppercase"
   },
   title: {
     fontSize: 16,

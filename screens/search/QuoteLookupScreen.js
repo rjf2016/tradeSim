@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCheckCircle, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { Navigation } from 'react-native-navigation';
 
+@inject('quotesstore')
 @inject('holdingsstore')
 @observer
 export default class QuoteLookupScreen extends Component {
@@ -28,7 +29,6 @@ export default class QuoteLookupScreen extends Component {
       newSymbols: [],  // symbols that are New;  will be saved 
       selectionMade: false  // set to true after first "new" symbol picked
     }
-
     Navigation.events().bindComponent(this); // <== Will be automatically unregistered when unmounted
   }
 
@@ -61,7 +61,8 @@ export default class QuoteLookupScreen extends Component {
   };
 
   search(searchText) {
-    this.props.holdingsstore.searchForSymbols(searchText)
+   // this.props.holdingsstore.searchForSymbols(searchText)  // uncomment to retrieve symbols from Firebase instead of market data API calls
+    this.props.quotesstore.getSymbols(searchText)
       .then(res => {    
         this.setState({ bestMatches: res, error: res.error || null });
       })
@@ -79,8 +80,8 @@ export default class QuoteLookupScreen extends Component {
   //Check if you already own this stock, if not, push it to newSymbols so it can later be 'saved'
   chosenItem(selectedItem) {   
     if (!this.symbolExists(selectedItem.item['symbol'])) {
-      this.state.newSymbols.push({ symbol: selectedItem.item['symbol'], company: selectedItem.item['company'] });
-      this.state.symbolsCached.splice(0, 0, { symbol: selectedItem.item['symbol'], company: selectedItem.item['company'] })
+      this.state.newSymbols.push({ symbol: selectedItem.item['symbol'], company: selectedItem.item['securityName'] });
+      this.state.symbolsCached.splice(0, 0, { symbol: selectedItem.item['symbol'], company: selectedItem.item['securityName'] })
       this.setState({ selectionMade: true, bestMatches: [], searchText: ''}); 
     }  
   }
@@ -147,7 +148,7 @@ export default class QuoteLookupScreen extends Component {
                 </TouchableHighlight>
               </View>
               <View style={{ flex: 1, flexDirection: "column", width: '100%' }}>
-                <Text style={{ color: 'grey', fontFamily: 'Avenir-Black', fontSize: 12 }}>{item['company']}</Text>
+                <Text style={{ color: 'grey', fontFamily: 'Avenir-Black', fontSize: 12 }}>{item['securityName']}</Text>
               </View>
             </View>
            )} 

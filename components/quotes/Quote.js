@@ -13,16 +13,16 @@ export default class Quote extends Component {
   }
 
 render() { 
-      if(!this.state.price)
+      if(!this.props.price)
          return null;
 
-      const c = this.state.change >= 0 ? "+" + this.state.change : this.state.change;
+  const c = this.props.change >= 0 ? "+" + this.props.change.toFixed(2) : this.props.change.toFixed(2);
       return <View style={styles.container}>
          <View style={{ width: '100%', flex: 1, flexDirection: 'row'}}>
           <View style={{ width: '80%', flex: 1, flexDirection: 'row'}}>
-            <Text style={styles.symbolText}>{this.state.symbol}  </Text>
-            <Text style={styles.priceText}>{this.state.price.toFixed(2)}</Text>
-            <Text style={[styles.changeText, this.state.change >= 0 ? {color:'lightgreen'} : {color:'red'}]}>  {c}</Text>
+            <Text style={styles.symbolText}>{this.props.symbol}  </Text>
+            <Text style={styles.priceText}>{this.props.price.toFixed(2)}</Text>
+            <Text style={[styles.changeText, this.props.change >= 0 ? {color:'lightgreen'} : {color:'red'}]}>  {c}</Text>
           </View>
           
           <View style={{ width: '20%'}}>
@@ -32,7 +32,7 @@ render() {
             </View>
        </View>
         <View>
-            <Text style={styles.companyText}>{this.state.company}</Text>
+          <Text style={styles.companyText}>{this.props.company}</Text>
           </View>
       </View>
   }

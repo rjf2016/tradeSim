@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
-import { View, Text, TouchableOpacity, TextInput, Button, TouchableHighlight, FlatList, StyleSheet, RefreshControl, AppState } from 'react-native'
+import { View, TouchableHighlight, FlatList, StyleSheet, RefreshControl, AppState } from 'react-native'
 import Portfolio from './Portfolio'; 
 'use strict';
 
@@ -22,16 +22,7 @@ export default class PortfolioList extends Component {
     this.renderRow = this.renderRow.bind(this);
     this.onActions = this.onActions.bind(this);
   }
-  formatNumber(num) {
-    return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  }
-  formatShares(num){
-    return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  }
-  currencyFormat(num) {
-    return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-  }
-  
+
   handleChange = text => {
     this.setState({
       portfolioName: text
@@ -50,6 +41,9 @@ export default class PortfolioList extends Component {
      case 'editPortfolioDetails':
        this.props.onActions(action, portfolioId, null, symbols, null);
        break;
+     case 'showQuoteDetailModal':
+        this.props.onActions(action, null, null, symbols, null);
+        break;
      case 'toggleChange':  // toggles between the stock price and percent changes for each line item
        this.setState({ showChange: showChange })
        break;
@@ -84,14 +78,14 @@ fetchIt() {
     }
 }
 
-  onRefreshList() {   
+ onRefreshList() {   
     if (this.state.isRefreshing)  // eliminate duplicate calls while a refresh was already called
          return;
 
-    this.setState({ isRefreshing: true }); // true isRefreshing flag for enable pull to refresh indicator
+    this.setState({ isRefreshing: true }); 
     
     this.fetchHoldingsData().then(res => {
-        this.setState({ isRefreshing: false }); // true isRefreshing flag for enable pull to refresh indicator  
+        this.setState({ isRefreshing: false });  
      });
  }
 
@@ -103,7 +97,7 @@ fetchIt() {
    AppState.removeEventListener('change', this._handleAppStateChange);
   }
 
-   _handleAppStateChange = (nextAppState) => {
+  _handleAppStateChange = (nextAppState) => {
     if (
       this.state.appState.match(/inactive|background/) &&
       nextAppState === 'active'
@@ -112,7 +106,6 @@ fetchIt() {
     }
     this.setState({appState: nextAppState});
   };
-
 
   renderRow(postKey) {
     const data = Object.fromEntries(Object.entries(postKey.item));

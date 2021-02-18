@@ -56,11 +56,11 @@ export default class TaxLotEditDetailScreen extends Component {
   
   navigationButtonPressed({ buttonId }) {
     if (buttonId == 'saveButton') {
-     if (!this.state.taxlotId) {   //if null,  'new' tax lot being added
+     if (!this.state.taxlotId) {   //if null, assume 'new' tax lot being added
         HoldingsStore.addTaxLot(this.state.portfolioId, this.state.symbol, this.props.company, parseFloat(this.state.quantity), parseFloat(this.state.price), this.state.date)
         Navigation.pop(this.props.componentId);
       }
-      else {  //  it's an update
+      else {  // assume it's an update
         HoldingsStore.updateTaxLot(this.state.portfolioId, this.state.taxlotId, this.state.symbol, parseFloat(this.state.quantity), parseFloat(this.state.price), this.state.date)
         Navigation.pop(this.props.componentId);
       }
@@ -81,7 +81,7 @@ export default class TaxLotEditDetailScreen extends Component {
 
   render() {  
     const todayDate = moment(new Date()).format("MM/DD/YYYY").toString();
-
+ 
     return (
       <View style={styles.main}>       
         <View style={{marginTop: 130, width: '100%', backgroundColor: '#000'}} >

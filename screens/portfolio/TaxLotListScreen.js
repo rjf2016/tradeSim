@@ -16,6 +16,7 @@ export default class TaxLotListScreen extends Component {
          drawBehind: true,
          background: { color: '#000' },
          leftButtons: [{ id: 'cancelButton', text: '<', fontSize: 18, color: 'white' }],
+ 
        }
       }
     }
@@ -52,6 +53,9 @@ export default class TaxLotListScreen extends Component {
   }
 
     navigationButtonPressed({ buttonId }) {
+    if (buttonId == 'saveButton') {
+        this.closeModal();
+    }
     if (buttonId == 'cancelButton') {
       this.closeModal();
     }

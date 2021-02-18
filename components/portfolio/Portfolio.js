@@ -5,7 +5,6 @@ import { inject, observer } from 'mobx-react'
 @inject('holdingsstore')
 @observer 
 export default class Portfolio extends Component {
-
   constructor(props) {
     super(props);
 
@@ -16,35 +15,17 @@ export default class Portfolio extends Component {
       holdingsstore: this.props.holdingsstore,
       collapsed: this.props.collapsed
     }
-
     this.symbolList = [];
   }
 
   componentDidMount() { 
-    this.setState({ 
-          loading: false
-    });
+    this.setState({loading: false });
   }
 
   onParentActions(action, portfolioId, portfolioName, symbols, showChange) {
    this.props.onActions(action, portfolioId, portfolioName, symbols, showChange);
   }
   
-  symbolPriceLookup(symbol) {
-    var o = {}
-    const symbolprices = this.state.holdingsstore.SymbolPrices;
-    
-    for (var i = 0; i < symbolprices.length; i++) {
-      if (symbolprices[i].symbol == symbol) {
-        o.latestPrice = symbolprices[i].latestPrice;
-        o.change = symbolprices[i].change,
-        o.changePercent = symbolprices[i].changePercent,
-        o.company = symbolprices[i].company;
-        return o;
-      }
-    }
-    return o;  
-  }
   buildSymbolList(holdings){
     const rowArray = []; 
 
@@ -53,25 +34,32 @@ export default class Portfolio extends Component {
 
     Object.entries(holdings).forEach(entry => {
       const [key, value] = entry;
-      
-      let v = this.symbolPriceLookup(value.symbol)
-     
-      const sign = v.change >= 0 ? "+" : ""
+
+      //Formatting the % or $ for when user clicks (toggles)
+      let price = this.state.holdingsstore.SymbolPrices.find(x => x.symbol === value.symbol);
+      if(price === undefined)
+         return null;
+  
+      const sign = price.change >= 0 ? "+" : ""
+      const color = price.change > 0 ? 'green' : price.change < 0 ? 'red' : '#252526'
       const dataType = this.props.showChange ? "" : "%"
    
       this.symbolList.push({ symbol: value.symbol, company: value.company });
 
       rowArray.push(<TouchableHighlight key={value.symbol}>
         <View key={value.symbol}>
+
           <View style={styles.container} key={value.symbol}>
+            <TouchableHighlight style={{ flex: 1, width: 100}} onPress={() => this.onParentActions('showQuoteDetailModal', null, null, value.symbol, null)} >
             <Text style={{ flex: 1, color: 'white', width: 100, fontSize: 14, fontFamily: 'Avenir-Black', fontWeight: 'bold', textAlign: 'left' }}>{value.symbol}</Text>
+            </TouchableHighlight>
             <View>
-              <Text style={{ flex: 1, color: 'white', width: 80, fontSize: 14, fontFamily: 'Avenir-Black', fontWeight: 'bold', textAlign: 'right' }}>{v.latestPrice}</Text>
+              <Text style={{ flex: 1, color: 'white', width: 80, fontSize: 14, fontFamily: 'Avenir-Black', fontWeight: 'bold', textAlign: 'right' }}>{price.latestPrice}</Text>
             </View>
-           
-            <TouchableHighlight style={[styles.valueChangeText, v.change > 0 ? { backgroundColor: 'green', borderRadius: 3 } : { backgroundColor: 'red', borderRadius: 3 }]} onPress={() => this.onParentActions('toggleChange', null, null, null, this.props.showChange == true ? false : true)} >
+            
+            <TouchableHighlight style={[styles.valueChangeText, { backgroundColor: color, borderRadius: 3 }]} onPress={() => this.onParentActions('toggleChange', null, null, null, this.props.showChange == true ? false : true)} >
                 <Text style={{ color: 'white', fontSize: 13, fontFamily: 'Avenir-Black' }}>
-                  {sign}{this.props.showChange ? parseFloat(v.change).toFixed(2) : parseFloat(v.changePercent * 100).toFixed(2)}{dataType}
+                {sign}{this.props.showChange ? parseFloat(price.change).toFixed(2) : parseFloat(price.changePercent * 100).toFixed(2)}{dataType}
                 </Text>
               </TouchableHighlight>
           </View>
@@ -83,7 +71,25 @@ export default class Portfolio extends Component {
      return rowArray;
   }
 
-
+performanceData(balances, collapsed) {
+  if(!balances) 
+     return null;
+  
+  if (collapsed) {
+    let colorTotal = balances.totalGain < 0 ? { color: 'red' } : { color: 'lightgreen' };
+    let Total = balances.totalGain < 0 ? this.currencyFormat(parseFloat(balances.totalGain)) + " (" + balances.totalGainPct + ")" : this.currencyFormat(parseFloat(balances.totalGain)) + " (+" + balances.totalGainPct + ")"
+    return <Text style={[styles.textPerformance, colorTotal]}>Total: {Total}</Text>
+  }
+  else {
+    let colorDay = balances.todayGain < 0 ? { color: 'red' } : { color: 'lightgreen' };
+    let Day = balances.todayGain < 0 ? this.currencyFormat(parseFloat(balances.todayGain)) + " (" + balances.todayGainPct + ")" : this.currencyFormat(parseFloat(balances.todayGain))  + " (+" + balances.todayGainPct + ")"
+    return <Text style={[styles.textPerformance, colorDay]}>Day: {Day}</Text>
+  }
+}
+currencyFormat(num) {
+    if(!num || num == undefined) return '$0';
+    return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
 portfolioLink(data) {
   return <View style={styles.details}>
         <View style={{ width: '80%' }}>
@@ -97,7 +103,6 @@ portfolioLink(data) {
               </TouchableHighlight>
         </View>
         </View>
-  
 }
 
   render() { 
@@ -111,12 +116,18 @@ portfolioLink(data) {
     if (this.state.loading || !symbols )
       return(<View><Text></Text></View>);
 
+    const balances = this.props.holdingsstore.getBalances(data.id);  // get the performance information for holdings in this portfolio
+
     // ----- Collapsed View -----
     if (this.state.collapsed.includes(data.id)) 
     return (
       <View style={{ borderRadius: 10, backgroundColor: '#252526', width: "100%" }}> 
       <View style={styles.container}>
-          <Text style={styles.portfolioHeader}>{data.portfolioName}</Text>
+          <View style={[styles.portfolioHeader, { flex: 1, flexDirection: 'column', alignItems: 'flex-start' }]}>
+            <View><Text style={[styles.portfolioHeader, { height: 20 }]}>{data.portfolioName}</Text></View>
+            <View><Text style={[styles.portfolioHeader, { height: 20, fontSize: 14 }]}>{this.performanceData(balances, 1)}</Text></View>
+          </View>
+          <View>
           <TouchableHighlight onPress={() => this.onParentActions('toggleCollapse', data.id, null, null, null)}>
             <View style={styles.portfolioHeader}>
               <Image source={require('../../img/chevronDown.png')} style={{ resizeMode: 'cover', height: 22, width: 22 }} />
@@ -124,20 +135,25 @@ portfolioLink(data) {
           </TouchableHighlight>
         </View>
        </View>
+       </View>
     );
 
     // ----- Expanded View -----
     return (
       <View style={{ borderRadius: 10, backgroundColor: '#252526', width: "100%"}}>
           <View style={styles.container}>
-             <Text style={styles.portfolioHeader}>{data.portfolioName}</Text>
-            <TouchableHighlight onPress={() => this.onParentActions('toggleCollapse', data.id, null, null, null)}>
-             <View style={styles.portfolioHeader}> 
-              <Image style={{ height: 22, width: 22 }} source={require('../../img/chevronUp.png')} /> 
+          <View style={[styles.portfolioHeader, { flex: 1, flexDirection:'column', alignItems:'flex-start'}]}>
+            <View><Text style={[styles.portfolioHeader, { height: 20}]}>{data.portfolioName}</Text></View>
+            <View><Text style={[styles.portfolioHeader, { height: 20, fontSize:14}]}>{this.performanceData(balances, 0)}</Text></View>
+           </View>
+          <View>
+                <TouchableHighlight onPress={() => this.onParentActions('toggleCollapse', data.id, null, null, null)}>
+                <View style={styles.portfolioHeader}> 
+                    <Image style={{ height: 22, width: 22 }} source={require('../../img/chevronUp.png')} /> 
+                  </View>
+                </TouchableHighlight>
               </View>
-          </TouchableHighlight>
-          </View>
-         
+         </View>
         <View style={styles.addActionRow}>
           <View style={{ justifyContent: 'center', width:'70%' }}>
           <TouchableHighlight onPress={() => this.onParentActions('addSymbols', data.id, null, data.holdings, null)}>
@@ -149,7 +165,7 @@ portfolioLink(data) {
         </View>
           <View style={{ justifyContent: 'center', width: '30%' }}>
             <TouchableHighlight onPress={() => this.onParentActions('editPortfolio', data.id, data.portfolioName, data.holdings, null)}>
-              <View style={styles.editSymbols}>        
+              <View style={styles.addSymbol}>        
                 <Image style={{ height: 14, width: 14 }} source={require('../../img/pencil.png')} /> 
                 <Text style={{ color: 'white', fontSize: 12, fontFamily: 'Avenir-Black' }}> Edit...</Text>
               </View>
@@ -159,9 +175,7 @@ portfolioLink(data) {
         <View style={{ flex: 1, flexDirection: 'column', width: '97%', marginTop: 5, bottom: 3, backgroundColor: '#252526'}}>        
             {symbols}
         </View>
-        
           {portfolioDetailsLink}
-       
         </View>
     );
    }
@@ -183,7 +197,7 @@ const styles = StyleSheet.create({
   details: {
     flexDirection: "row",
     backgroundColor: '#252526',
-    left: 10,
+    left: 8,
     top: 0,
     paddingTop: 5,
     width: "90%",
@@ -196,13 +210,12 @@ const styles = StyleSheet.create({
     width: "97%",
     alignItems: 'center',
   },
-  textData: {
-    color: 'white',
-    padding: 2,
-    fontSize: 16,
-    textAlign: 'left',
-    width: "100%",
-    height: 30
+  textPerformance: {
+  width: 50, 
+  color: 'white', 
+  fontSize: 12, 
+  textAlign: 'right',
+  fontFamily: 'Avenir-Black'
   },
   iexCloud: {
     color: 'white', 
@@ -223,8 +236,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     fontFamily: 'Avenir-Black',
-    height: 30,
-    width: "97%"
+    height: 36,
+    width: "97%",
+    backgroundColor: '#252526',
   },
   addSymbol: {
     flexDirection: 'row',
@@ -238,18 +252,6 @@ const styles = StyleSheet.create({
     height: 20,
     width: 100
   },
-  editSymbols: {
-    flexDirection: 'row',
-    borderRadius: 7,
-    borderWidth: StyleSheet.hairlineWidth,
-    backgroundColor: '#252526',
-    borderColor: 'grey',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 11,
-    height: 20,
-    width: 100
-  },
   portfolioDetails: {
     backgroundColor: '#252526',
     textAlign: 'center',
@@ -258,19 +260,5 @@ const styles = StyleSheet.create({
     fontFamily: 'Avenir-Black',
     height: 20,
     width: 100
-  },
-  editList: {
-    backgroundColor: '#252526',
-    textAlign: 'center',
-    fontSize: 12,
-    color: 'white',
-    fontFamily: 'Avenir-Black',
-    height: 20,
-    width: 100
-  },
-  holdingsText: {
-    fontSize: 14,
-    color: 'white',
-    fontFamily: 'Avenir-Black',
-  },
+  }
 })

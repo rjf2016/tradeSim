@@ -16,19 +16,17 @@ export default class Initializing extends Component {
     };
    
     Firebase.auth().onAuthStateChanged((user) => {  
-      console.log(user)
-      if (user != null) 
+      if (user != null) {
         goToPortfolioSummary();
-      else 
+      }
+      else {
         goToLogin();
+      }
     })
   }
   
-  componentDidMount() {
-    SplashScreen.hide();
-  }
-  
 render() {
+  SplashScreen.hide();
   return (
     <View style={{width:'100%', height:'100%', backgroundColor:'black'}}></View>
   );

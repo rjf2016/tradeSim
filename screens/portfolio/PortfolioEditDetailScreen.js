@@ -42,6 +42,9 @@ export default class PortfolioEditDetailScreen extends Component {
   }
 
   navigationButtonPressed({ buttonId }) {
+    if (buttonId == 'saveButton') {
+       // this.closeModal();
+    }
     if (buttonId == 'cancelButton') {
       this.closeModal();
     }

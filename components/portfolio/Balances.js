@@ -17,21 +17,50 @@ componentDidMount() {
     this.setState({ loading: false });
 }
   
-numberWithCommas(x) {
+ numberWithCommas(x) {
    return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : null
 }
 
 numberWithPercents(x) {
-  return x ? "(" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "%)" : null
+  return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "%" : null
 }
+
+performanceData(totalPortfolioValue, todayGain, todayGainPct, totalGain, totalGainPct, collapsed) {
+    if (!totalGain)
+      return null;
+
+    if (collapsed) {
+      let colorTotal = totalGain < 0 ? { color: 'red' } : { color: 'lightgreen' };
+      let colorDay = todayGain < 0 ? { color: 'red' } : { color: 'lightgreen' };
+      let Day = todayGain < 0 ? this.numberWithCommas(todayGain) + " (" + this.numberWithPercents(todayGainPct) + ")" : this.numberWithCommas(todayGain) + " (+" + this.numberWithPercents(todayGainPct) + ")"
+      let Total = totalGain < 0 ? this.numberWithCommas(totalGain) + " (" + this.numberWithPercents(totalGainPct) + ")" : this.numberWithCommas(totalGain) + " (+" + this.numberWithPercents(totalGainPct) + ")"
+      return <Text style={styles.performanceSmall}>
+        Day: <Text style={[styles.performanceSmall, colorDay ]}>{Day}  </Text>
+            Total: <Text style={[styles.performanceSmall, colorTotal]}>{Total}</Text>
+      </Text>
+    }
+    else {
+      let colorTotal = totalGain < 0 ? { color: 'red' } : { color: 'lightgreen' };
+      let colorDay = todayGain < 0 ? { color: 'red' } : { color: 'lightgreen' };
+      let Day = todayGain < 0 ?  this.numberWithCommas(todayGain) + " (" + this.numberWithPercents(todayGainPct) + ")" : this.numberWithCommas(todayGain) + " (+" + this.numberWithPercents(todayGainPct) + ")"
+      let Total = totalGain < 0 ? this.numberWithCommas(totalGain) + " (" + this.numberWithPercents(totalGainPct) + ")" : this.numberWithCommas(totalGain) + " (+" + this.numberWithPercents(totalGainPct) + ")"
+         return <View style={{ width: '94%' }}>
+        <Text style={styles.totalValueDollarSignText}>$<Text style={styles.totalValue}>{this.numberWithCommas(totalPortfolioValue)}</Text></Text>
+        <Text style={styles.totalReturnText}>Day's Gain:    <Text style={[styles.performance, colorDay]}>
+          {Day}
+        </Text></Text>
+        <Text style={styles.totalReturnText}>Total Gain:    <Text style={[styles.performance, colorTotal]}>
+          {Total}
+        </Text></Text>
+      </View>
+    }
+  }
 
 collapsed (totalPortfolioValue, todayGain, todayGainPct, totalGain, totalGainPct) {
   return (
     <View style={[styles.container, { height: 25 }]}>
       <View style={{ width: '94%', backgroundColor: 'black', justifyContent: 'center' }}>
-        <Text style={styles.performanceSmall}>
-          Day: <Text style={[styles.performance, { fontSize: 12 }, todayGain < 0 ? { color: 'red' } : { color: 'lightgreen' }]}>{this.numberWithCommas(todayGain)} {this.numberWithPercents(todayGainPct)}</Text>   Total: <Text style={[styles.performance, { fontSize: 12 }, totalGain < 0 ? { color: 'red' } : { color: 'lightgreen' }]}>{this.numberWithCommas(totalGain)} {this.numberWithPercents(totalGainPct)} </Text>
-        </Text>
+        {this.performanceData(totalPortfolioValue, todayGain, todayGainPct, totalGain, totalGainPct, 1) }  
       </View>
       <TouchableHighlight onPress={() => this.collapse()}>
         <View style={{ width: '6%', backgroundColor: 'black' }}>
@@ -44,15 +73,7 @@ collapsed (totalPortfolioValue, todayGain, todayGainPct, totalGain, totalGainPct
 expanded (totalPortfolioValue, todayGain, todayGainPct, totalGain, totalGainPct) {
   return (
     <View style={styles.container}>
-      <View style={{ width: '94%' }}>
-        <Text style={styles.totalValueDollarSignText}>$<Text style={styles.totalValue}>{this.numberWithCommas(totalPortfolioValue)}</Text></Text>
-        <Text style={styles.totalReturnText}>Day's Gain:    <Text style={[styles.performance, todayGain < 0 ? { color: 'red' } : { color: 'lightgreen' }]}>
-          {this.numberWithCommas(todayGain)} {this.numberWithPercents(todayGainPct)}
-        </Text></Text>
-        <Text style={styles.totalReturnText}>Total Gain:    <Text style={[styles.performance, totalGain < 0 ? { color: 'red' } : { color: 'lightgreen' }]}>
-          {this.numberWithCommas(totalGain)} {this.numberWithPercents(totalGainPct)}
-        </Text></Text>
-      </View>
+      {this.performanceData(totalPortfolioValue, todayGain, todayGainPct, totalGain, totalGainPct, 0)}
       <TouchableHighlight onPress={() => this.collapse()}>
         <View style={{ width: '6%' }}>
           <Image source={require('../../img/chevronUp.png')} style={{ resizeMode: 'cover', height: 22, width: 22 }} />
@@ -74,14 +95,7 @@ render() {
   if (b === undefined || Object.keys(b) == 0)
      return this.state.collapse ? this.collapsed(0, 0, 0, 0, 0) : this.expanded(0,0,0,0,0)
 
-   var bal = {};
-   Object.entries(balances).forEach(entry => {
-     const [key, value] = entry;
-     if (value.id == 'Total')
-       bal = { totalPortfolioValue: value.performance.totalPortfolioValue, todayGain: value.performance.todayGain, 
-               todayGainPct: value.performance.todayGainPct, totalGain: value.performance.totalGain, totalGainPct: value.performance.totalGainPct   
-        }
-    });
+  const bal = this.props.holdingsstore.getBalances('Total');  // get the performance information for holdings in this portfolio
 
    if (!this.state.collapse) 
       return this.expanded(bal.totalPortfolioValue, bal.todayGain, bal.todayGainPct, bal.totalGain, bal.totalGainPct);

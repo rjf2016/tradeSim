@@ -130,10 +130,10 @@ signOut() {
   @action
   signInSendEmailLink(email) {
   const actionCodeSettings = {
-    url: 'https://tradesim.net',
+    url: 'https://YOUR_BUNDLE_ID',
     handleCodeInApp: true, // must always be true for sendSignInLinkToEmail
     iOS: {
-      bundleId: 'com.sim.TradeSim',
+      bundleId: 'YOUR_BUNDLE_ID',
     },
   };
   

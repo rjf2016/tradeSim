@@ -1,8 +1,8 @@
 import Firebase from 'firebase';
-import { API_KEY } from '@env'
+
 
 const config = {
-apiKey: API_KEY,
+apiKey: YOUR_FIREBASE_APIKEY,
 authDomain: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 databaseURL: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 projectId: "XXXXXX-XXXXX",

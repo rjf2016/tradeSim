@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { inject, observer } from 'mobx-react'
-import { showSettingsModal, showPorfolioEditModal, showPorfolioEditDetailsModal, showSearchModal, showCreatePortfolio } from '../utils/Navigation';
+import { showQuoteDetailModal, showSettingsModal, showPorfolioEditModal, showPorfolioEditDetailsModal, showSearchModal, showCreatePortfolio } from '../utils/Navigation';
 import Balances from '../../components/portfolio/Balances';
 import PortfolioList from '../../components/portfolio/PortfolioList';
+import SplashScreen from 'react-native-splash-screen';
 
 @inject('authstore')
 @inject('holdingsstore')
@@ -42,6 +43,9 @@ export default class PortfolioScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    SplashScreen.hide();
+  }
   //This function is called from child components
   onActions(action, portfolioId, portfolioName, symbols, showChange) {
     switch (action) {
@@ -62,6 +66,9 @@ export default class PortfolioScreen extends Component {
         break;
       case 'toggleCollapse':  // toggles the collapse/expand (up/down arrows)
         this.onCollapseToggle(portfolioId)
+        break;
+      case 'showQuoteDetailModal':
+        showQuoteDetailModal(symbols, '');
         break;
     }
   }

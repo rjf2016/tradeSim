@@ -1,5 +1,6 @@
 import { Navigation } from 'react-native-navigation'
 
+
 export const showAlert = (componentId, title, message, cbFunction) => Navigation.showOverlay({
   component: {
     id: 'Alert',

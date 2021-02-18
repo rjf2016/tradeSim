@@ -64,9 +64,11 @@ function formatOptions(options) {
     throw error;
   }
   const {
-    date_from, date_to, sort, formatted, date, interval, 
+    date_from, date_to, sort, formatted, date, interval, chartInterval,
     symbols, stock_exchange, currency, limit, page, sort_by, sort_order, range, types
   } = options;
+
+  query += chartInterval !== undefined ? `chartInterval=${chartInterval}&` : '';
   query += date_from !== undefined ? `date_from=${date_from}&` : '';
   query += date_to !== undefined ? `date_to=${date_to}&` : '';
   query += sort !== undefined ? `sort=${sort}&` : '';
@@ -82,7 +84,7 @@ function formatOptions(options) {
   query += interval !== undefined ? `interval=${interval}&` : '';
   query += range !== undefined ? `range=${range}&` : '';
   query += types !== undefined ? `types=${types}&` : '';
- 
+  
   return query;
 }
 

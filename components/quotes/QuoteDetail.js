@@ -32,27 +32,28 @@ abbreviateNumber(value) {
 
 formatNumber(value, precision) {
   if(!value || value === undefined)
-    return;
-
+    return "-";
   return value.toFixed(precision)
 }
 
 render() { 
-      if(!this.state.data)
-         return null;
+  if(!this.state.data)
+    return null;
+
+  const d = this.state.data;
 
       return <View style={styles.container}>
         <View style={{width:'23%'}}>
-        <Text style={styles.labelText}>Open:</Text>
+          <Text style={styles.labelText}>Open:</Text>
           <Text style={styles.labelText}>High:</Text>
           <Text style={styles.labelText}>Low:</Text>
           <Text style={styles.labelText}>P/E:</Text>
         </View>
         <View style={{ width: '23%' }}>
-          <Text style={styles.dataText}>{this.formatNumber(this.state.data.open, 2)}</Text>
-          <Text style={styles.dataText}>{this.formatNumber(this.state.data.high, 2)}</Text>
-          <Text style={styles.dataText}>{this.formatNumber(this.state.data.low, 2)}</Text>    
-          <Text style={styles.dataText}>{this.state.data.peRatio}</Text>
+          <Text style={styles.dataText}>{this.formatNumber(d.previousClose, 2)}</Text>
+          <Text style={styles.dataText}>{this.formatNumber(d.high, 2)}</Text>
+          <Text style={styles.dataText}>{this.formatNumber(d.low, 2)}</Text>    
+          <Text style={styles.dataText}>{d.peRatio}</Text>
         </View>
         <View style={{ width: '8%' }}></View>
         <View style={{ width: '23%' }}>
@@ -62,10 +63,10 @@ render() {
           <Text style={styles.labelText}>Mkt Cap:</Text>
         </View>
         <View style={{ width: '23%' }}>
-          <Text style={styles.dataText}>{this.formatNumber(this.state.data.week52High, 2)}</Text>
-          <Text style={styles.dataText}>{this.formatNumber(this.state.data.week52Low, 2)}</Text>
-          <Text style={styles.dataText}>{this.abbreviateNumber(this.state.data.volume)}</Text>
-          <Text style={styles.dataText}>{this.abbreviateNumber(this.state.data.marketCap)}</Text>
+          <Text style={styles.dataText}>{this.formatNumber(d.week52High, 2)}</Text>
+          <Text style={styles.dataText}>{this.formatNumber(d.week52Low, 2)}</Text>
+          <Text style={styles.dataText}>{this.abbreviateNumber(d.volume)}</Text>
+          <Text style={styles.dataText}>{this.abbreviateNumber(d.marketCap)}</Text>
         </View>
       </View>
   }
@@ -83,12 +84,14 @@ const styles = StyleSheet.create({
     height:100
   },
   labelText: {
+    height: 22,
     textAlign: 'left',
     fontSize: 16,
     color: 'grey',
     fontFamily: 'Avenir-Black',
   },
   dataText: {
+    height: 22,
     textAlign: 'right',
     fontSize: 16,
     color: 'white',

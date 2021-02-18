@@ -1,9 +1,6 @@
 const fetchData = require('../utils/fetchData');
 const makeQueries = require('../utils/makeQueries');
 const formatOptions = require('../utils/formatOptions');
-import MarketDataAPIURL from '../utils/MarketDataAPIURL';
-
-const NEWS_URL = MarketDataAPIURL() + '/stable/stock/market/batch?types=news&last=3&symbols=';
 
 async function news({
   symbols, API_TOKEN, API_URL, options
