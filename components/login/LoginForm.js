@@ -46,8 +46,8 @@ class LoginForm extends Component {
         </TouchableOpacity>
 
         <View style={styles.loginTextContainer}>
-            <Text style={styles.label} onPress={this.props.callbackForgot}>Forgot password?</Text>
-            <Text style={styles.label} onPress={this.props.callbackSignUp}>Sign up</Text>
+          <Text style={[styles.label, { textAlign: 'left' }]} onPress={this.props.callbackForgot}>Forgot password?</Text>
+          <Text style={[styles.label, {textAlign: 'right'}]} onPress={this.props.callbackSignUp}>Sign up</Text>
         </View>
       </View>
     );
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 50,
     marginLeft: 50,
-    backgroundColor: '#000',
+    backgroundColor: 'black',
     flexDirection: 'row',
     paddingRight: 5,
     paddingLeft: 5

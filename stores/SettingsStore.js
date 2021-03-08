@@ -1,17 +1,24 @@
 import Firebase from 'firebase';
 
-
 const config = {
-apiKey: YOUR_FIREBASE_APIKEY,
-authDomain: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-databaseURL: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-projectId: "XXXXXX-XXXXX",
-storageBucket: "",
-messagingSenderId: "432966879226",
-appId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  apiKey: "PLACEHOLDER",
+  authDomain: "PLACEHOLDER",
+  databaseURL: "PLACEHOLDER",
+  projectId: "PLACEHOLDER",
+  storageBucket: "",
+  messagingSenderId: "PLACEHOLDER",
+  appId: "PLACEHOLDER"
 };
 
-// const unitId = 'ca-app-pub-8142056705160793/7905699587';   //AdMob unit ID
+export const twitterConfig = {
+  TWITTER_CONSUMER_KEY: "PLACEHOLDER",
+  TWITTER_CONSUMER_SECRET: "PLACEHOLDER"
+}
+
+export const googleConfig = {
+  WEBCLIENTID: "PLACEHOLDER.apps.googleusercontent.com",
+  IOSCLIENTID: "PLACEHOLDER.apps.googleusercontent.com"
+}
 
 class SettingsStore { 
   constructor() {

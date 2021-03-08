@@ -47,6 +47,10 @@ class SignupForm extends Component {
           onPress={this.onSignUpClick}>
           <Text style={styles.buttonText}>Sign-up</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style={{ paddingTop: 10, alignItems: 'center' }} onPress={() => this.props.callbackReturnToLogin()}>
+          <Text style={{color: 'white', fontFamily: 'Avenir-Black' }}> Back to Login </Text>
+        </TouchableOpacity>
       </View>
     );
   }

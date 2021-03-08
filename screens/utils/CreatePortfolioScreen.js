@@ -30,11 +30,15 @@ export default class CreatePortfolioScreen extends Component {
   }
   handleChange = text => {
     this.setState({
-      portfolioName: text
+      portfolioName: text,
+      message: ''
     });  
   } 
 
   handleCallback() {
+   if(!this.state.portfolioName)
+     this.setState({message: 'Please enter a Name'});
+
    this.state.cbFunction(this.state.portfolioName)
   }
 
@@ -115,5 +119,9 @@ const styles = StyleSheet.create({
   },
   message: {
     marginVertical: 8,
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: 'lightgreen',
+    textAlign: 'center'
   },
 });

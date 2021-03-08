@@ -1,6 +1,6 @@
 // LoginScreen.js
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image, KeyboardAvoidingView} from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableOpacity, Image, KeyboardAvoidingView} from 'react-native';
 import { inject, observer } from 'mobx-react'
 import { goToSignUp, showForgotPasswordModal } from '../utils/Navigation'
 import { GoogleSigninButton } from 'react-native-google-signin';
@@ -10,7 +10,6 @@ import SplashScreen from 'react-native-splash-screen';
 @inject('authstore')
 @observer
 export default class LoginScreen extends Component {
-
   constructor(props) {
     super(props);
 
@@ -29,11 +28,13 @@ export default class LoginScreen extends Component {
     this.onGoogleLogout = this.onGoogleLogout.bind(this);
     this.onSignOut = this.onSignOut.bind(this);
     this.onForgotNavigate = this.onForgotNavigate.bind(this);
+    this.onTwitterLogin = this.onTwitterLogin.bind(this);
+    this.onTwitterLogout = this.onTwitterLogout.bind(this);
   }
 
-  componentDidMount() {
+componentDidMount() {
     SplashScreen.hide();
-  }
+}
   
 onGoogleLoginSetup(){
   this.state.authstore.setupGoogleSignin();
@@ -44,6 +45,12 @@ async onGoogleLogin(){
   this.state.authstore.GooglesignIn();
 }
 
+async onTwitterLogin() {
+  this.state.authstore.twitterSignIn();
+}
+async onTwitterLogout() {
+    this.state.authstore.twitterLogout();
+  }
 onGoogleLogout(){
   this.state.authstore.onLogoffGoogle();
 }
@@ -84,17 +91,21 @@ async onLoginClick(username, password) {
             <Image source={require('../../img/trade-sim-new-logo.png')}></Image>
             <Text style={styles.tradeSimText}>Trade Sim</Text>
             <Text style={styles.errorText}> {e} </Text>
-            
           </View>
           
-          <LoginForm  username={this.state.username} pwd={this.state.pwd} props={this.props} callbackForgot={this.onForgotNavigate} callbackLogin={this.onLoginClick} callbackSignUp={this.onSignUpNavigate} />
+          <LoginForm username={this.state.username} pwd={this.state.pwd} props={this.props} callbackForgot={this.onForgotNavigate} callbackLogin={this.onLoginClick} callbackSignUp={this.onSignUpNavigate} />
        
           <View style={styles.viewLogin}>
-              <GoogleSigninButton
-                style={{ width: 192, height: 48 }}
-                size={GoogleSigninButton.Size.Wide}
-                color={GoogleSigninButton.Color.Dark}
-              onPress={this.onGoogleLogin} />
+            <TouchableOpacity onPress={this.onGoogleLogin}>
+            <Image style={{ width: 228, height: 35 }} source={require('../../img/signinGoogle.png')}></Image>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.viewLogin}>
+            <View>
+              <TouchableOpacity onPress={this.onTwitterLogin}>
+              <Image style={{width:228, height:35}} source={require('../../img/signinTwitter.png')}></Image>
+              </TouchableOpacity>
+            </View>
           </View>
           <View style={styles.viewLogin}>
             <TouchableOpacity styles={styles.buttonContainer}
@@ -115,14 +126,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#000'
   },
+  twitterButton: {
+    backgroundColor: '#1b95e0',
+    color: 'white',
+    width: 200,
+    height: 50
+  },
+  socialButtonContainer: {
+    padding: 15,
+    marginRight: 50,
+    marginLeft: 50,
+  },
   viewLogin: {
     justifyContent: 'center', 
     alignItems: 'center',
-    padding: 20,
+    padding: 10,
   },
   loginContainer: {
-    flexGrow: 1,
-    justifyContent: 'center'
+    //flexGrow: 1,
+    flex: 1,
+    top: 100,
+   // justifyContent: 'center'
   },
   tradeSimText: {
        textAlign: "center",

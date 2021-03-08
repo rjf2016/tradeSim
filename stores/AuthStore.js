@@ -1,7 +1,11 @@
 import { observable, action, computed } from 'mobx';
 import Firebase from 'firebase';
 import { GoogleSignin } from 'react-native-google-signin';
-import autobind from 'autobind-decorator'
+import autobind from 'autobind-decorator';
+import { NativeModules } from 'react-native';
+import { twitterConfig, googleConfig } from '../stores/SettingsStore'
+const { RNTwitterSignIn } = NativeModules
+
 
 @autobind
 class AuthStore {
@@ -17,26 +21,29 @@ class AuthStore {
   api_isProduction = false;
 
   constructor() {
+   
+
     Firebase.auth().onAuthStateChanged((user) => {  
       if (user != null) {
             this.user = user;  
             this.userId = user.uid;  
             uid = user.uid; //unique user id after firebase authentication      
             
-            var apiRef = Firebase.database().ref().child('users/' + uid + '/iexData');
-            apiRef.on('value', (snapshot) => {
-              //Check Firebase to determine whether to use the production or sandbox API Key for Market Data 
-              //Use Sandbox for debugging/testing to avoid overages
-              if(snapshot.val().iexUseProduction == true){
-                  this.api_ref = snapshot.val().iexProduction;
-                  this.api_url = snapshot.val().iexProdURL;
-                  this.api_isProduction = true;
-              }
-              else {
-                this.api_ref = snapshot.val().iexSandbox;
-                this.api_url = snapshot.val().iexDevURL;
-                this.api_isProduction = false;
-              }
+        var apiRef = Firebase.database().ref().child('users/' + uid + '/iexData');
+        apiRef.on('value', (snapshot) => {
+          
+          if(snapshot.val().iexUseProduction == true){
+              this.api_ref = snapshot.val().iexProduction;
+              this.api_url = snapshot.val().iexProdURL;
+              this.api_isProduction = true;
+              console.log("---- USING PRODUCTION API ----")
+          }
+          else {
+            this.api_ref = snapshot.val().iexSandbox;
+            this.api_url = snapshot.val().iexDevURL;
+            this.api_isProduction = false;
+            console.log("---- USING DEVELOPMENT API ----")
+          }
         });
         }
     })
@@ -50,6 +57,42 @@ class AuthStore {
     apiRef.update({ iexUseProduction: useProd });
     this.useProduction = useProd;
   }
+ 
+
+  @action
+  async twitterSignIn() {
+    try {
+      RNTwitterSignIn.init(twitterConfig.TWITTER_CONSUMER_KEY, twitterConfig.TWITTER_CONSUMER_SECRET);
+      const userInfo = await RNTwitterSignIn.logIn();
+      if (userInfo) {
+        console.log(userInfo)
+        const credential = Firebase.auth.TwitterAuthProvider.credential(userInfo.authToken, userInfo.authTokenSecret);
+        Firebase.auth().signInWithCredential(credential);
+        const currentUser = await Firebase.auth().signInWithCredential(credential);
+        var user = Firebase.auth().currentUser;
+
+        if (user) {
+          this._user = user;
+          this._userId = user.uid;
+        }
+      }
+    } catch (error) {
+      this.error = error.message;
+      console.log("Twitter Sign-in error: " + error.message)
+    }
+  }
+@action
+async twitterLogout() {
+  try {
+    return await RNTwitterSignIn.logOut()();
+  } catch (error) {
+    console.log(error)
+    this.error = error.message;
+  }
+}
+
+
+
 
   //Called to see if session is still valid.  If Firebase.auth().signInWithCredential(credential) is successful,
   //the function in the constructor will get called and navigate to Portfolio Summary    
@@ -58,13 +101,13 @@ class AuthStore {
     try {
       await GoogleSignin.configure({
         scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
-        webClientId: 'XXXXXXX.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+        webClientId: googleConfig.WEBCLIENTID, // client ID of type WEB for your server (needed to verify user ID and offline access)
         offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
         hostedDomain: '', // specifies a hosted domain restriction
         loginHint: '', // [iOS] The user's ID, or email address, to be prefilled in the authentication UI if possible. [See docs here](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a0a68c7504c31ab0b728432565f6e33fd)
         forceConsentPrompt: true, // [Android] if you want to show the authorization prompt at each login.
         accountName: '', // [Android] specifies an account name on the device that should be used
-        iosClientId: 'XXXXXX', // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
+        iosClientId: googleConfig.IOSCLIENTID, // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
       });
     }
     catch (err) {
@@ -108,6 +151,7 @@ class AuthStore {
 @action
 signOut() {
     return Firebase.auth().signOut().then(f => {     
+      console.log("Signed out successfully")
       this.user = this.userId = null;
     }).catch(function (error) {
       console.log(error)
@@ -130,10 +174,10 @@ signOut() {
   @action
   signInSendEmailLink(email) {
   const actionCodeSettings = {
-    url: 'https://YOUR_BUNDLE_ID',
+    url: 'https://tradesim.net',
     handleCodeInApp: true, // must always be true for sendSignInLinkToEmail
     iOS: {
-      bundleId: 'YOUR_BUNDLE_ID',
+      bundleId: 'com.sim.TradeSim',
     },
   };
   

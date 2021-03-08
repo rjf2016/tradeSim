@@ -41,6 +41,11 @@
 		7F176B09232556460017B12C /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F176B05232556460017B12C /* nanopb.framework */; };
 		7F66C88025AA49CD0017B6BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F66C85425AA49CD0017B6BE /* Images.xcassets */; };
 		7F66C89425AB6CB30017B6BE /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F66C88E25AB6C030017B6BE /* libSplashScreen.a */; };
+		7F991C1425E5D1E100FDDF8B /* TwitterShareExtensionUIResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F991C1025E5D1E100FDDF8B /* TwitterShareExtensionUIResources.bundle */; };
+		7F991C1525E5D1E100FDDF8B /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F991C1125E5D1E100FDDF8B /* TwitterKitResources.bundle */; };
+		7F991C1F25E5D27E00FDDF8B /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F991C0F25E5D1E100FDDF8B /* TwitterCore.framework */; };
+		7F991C2025E5D27E00FDDF8B /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F991C0E25E5D1E100FDDF8B /* TwitterKit.framework */; };
+		7FA4580625F5739C004EBE3F /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA457FB25F572AD004EBE3F /* libRNTwitterSignIn.a */; };
 		7FBFADC522E49E8600886E33 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBFAD9B22E49E8500886E33 /* AddressBook.framework */; };
 		7FBFADC722E49E9300886E33 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBFADC622E49E9300886E33 /* SafariServices.framework */; };
 		7FBFADC922E49EA200886E33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBFADC822E49EA200886E33 /* SystemConfiguration.framework */; };
@@ -318,6 +323,13 @@
 			remoteGlobalIDString = 3D7682761D8E76B80014119E;
 			remoteInfo = SplashScreen;
 		};
+		7FA457FA25F572AD004EBE3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FA457CA25F572AD004EBE3F /* RNTwitterSignIn.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D07E57251F07806700A7160F;
+			remoteInfo = RNTwitterSignIn;
+		};
 		7FED9D0322D7FDF1008FE3B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -384,7 +396,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -408,6 +419,7 @@
 		4853934C19224BC5A58CB224 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGoogleSignin.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6ABCEB4D174D43B1B90E0B85 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
+		6C53E8A0162E45D792C06316 /* libRNTwitterSignIn.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNTwitterSignIn.a; sourceTree = "<group>"; };
 		6E27E770CC68470B843CF26B /* RNAdMobManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAdMobManager.xcodeproj; path = "../node_modules/react-native-admob/ios/RNAdMobManager.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7F176AD7232556460017B12C /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
@@ -416,6 +428,11 @@
 		7F176B05232556460017B12C /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		7F66C85425AA49CD0017B6BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TradeSim/Images.xcassets; sourceTree = "<group>"; };
 		7F66C88925AB6C030017B6BE /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
+		7F991C0E25E5D1E100FDDF8B /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		7F991C0F25E5D1E100FDDF8B /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		7F991C1025E5D1E100FDDF8B /* TwitterShareExtensionUIResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterShareExtensionUIResources.bundle; path = TwitterKit.framework/TwitterShareExtensionUIResources.bundle; sourceTree = "<group>"; };
+		7F991C1125E5D1E100FDDF8B /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		7FA457CA25F572AD004EBE3F /* RNTwitterSignIn.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNTwitterSignIn.xcodeproj; path = "../../../../Documents/TradeSim/node_modules/react-native-login-twitter/ios/RNTwitterSignIn.xcodeproj"; sourceTree = "<group>"; };
 		7FBFAD9B22E49E8500886E33 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		7FBFADC622E49E9300886E33 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		7FBFADC822E49EA200886E33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -459,6 +476,7 @@
 				7FED9D1122D80055008FE3B2 /* libReactNativeNavigation.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
+				7FA4580625F5739C004EBE3F /* libRNTwitterSignIn.a in Frameworks */,
 				7F176B07232556460017B12C /* GoogleUtilities.framework in Frameworks */,
 				7FBFADD122E4AB7800886E33 /* GoogleSignIn.framework in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -476,6 +494,8 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				8C8774BE3331452FB0F6ED75 /* libRNGoogleSignin.a in Frameworks */,
 				7A2C873D6120426E9E1C4FDD /* libRNSVG.a in Frameworks */,
+				7F991C1F25E5D27E00FDDF8B /* TwitterCore.framework in Frameworks */,
+				7F991C2025E5D27E00FDDF8B /* TwitterKit.framework in Frameworks */,
 				9C27B7ED473E4128A1C11F57 /* libRNAdMobManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,7 +612,6 @@
 			children = (
 				7F66C85425AA49CD0017B6BE /* Images.xcassets */,
 				7FBFADCC22E4A85800886E33 /* GoogleService-Info.plist */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -628,6 +647,10 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F991C0F25E5D1E100FDDF8B /* TwitterCore.framework */,
+				7F991C0E25E5D1E100FDDF8B /* TwitterKit.framework */,
+				7F991C1125E5D1E100FDDF8B /* TwitterKitResources.bundle */,
+				7F991C1025E5D1E100FDDF8B /* TwitterShareExtensionUIResources.bundle */,
 				7F176B04232556460017B12C /* GoogleAppMeasurement.framework */,
 				7F176AD7232556460017B12C /* GoogleMobileAds.framework */,
 				7F176B03232556460017B12C /* GoogleUtilities.framework */,
@@ -689,6 +712,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7FA457CB25F572AD004EBE3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7FA457FB25F572AD004EBE3F /* libRNTwitterSignIn.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7FED9CDC22D7FDF1008FE3B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,6 +737,7 @@
 				83EE011D844C461885BBF5E1 /* libRNSVG.a */,
 				6ABCEB4D174D43B1B90E0B85 /* libRNSVG-tvOS.a */,
 				B6FD4B374E304A7191340E8D /* libRNAdMobManager.a */,
+				6C53E8A0162E45D792C06316 /* libRNTwitterSignIn.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -721,6 +753,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				7FA457CA25F572AD004EBE3F /* RNTwitterSignIn.xcodeproj */,
 				7F66C88925AB6C030017B6BE /* SplashScreen.xcodeproj */,
 				7FED9CDB22D7FDF1008FE3B2 /* ReactNativeNavigation.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -967,6 +1000,10 @@
 				{
 					ProductGroup = 7F58B62123116881007E0A99 /* Products */;
 					ProjectRef = B55AD5C0522149C1AA9B2C3F /* RNSVG.xcodeproj */;
+				},
+				{
+					ProductGroup = 7FA457CB25F572AD004EBE3F /* Products */;
+					ProjectRef = 7FA457CA25F572AD004EBE3F /* RNTwitterSignIn.xcodeproj */;
 				},
 				{
 					ProductGroup = 7F66C88A25AB6C030017B6BE /* Products */;
@@ -1229,6 +1266,13 @@
 			remoteRef = 7F66C88D25AB6C030017B6BE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		7FA457FB25F572AD004EBE3F /* libRNTwitterSignIn.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNTwitterSignIn.a;
+			remoteRef = 7FA457FA25F572AD004EBE3F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7FED9D0422D7FDF1008FE3B2 /* libjsi.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1310,6 +1354,8 @@
 				7F66C88025AA49CD0017B6BE /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				7FBFADCD22E4A85800886E33 /* GoogleService-Info.plist in Resources */,
+				7F991C1525E5D1E100FDDF8B /* TwitterKitResources.bundle in Resources */,
+				7F991C1425E5D1E100FDDF8B /* TwitterShareExtensionUIResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1437,12 +1483,16 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
 				);
 				INFOPLIST_FILE = TradeSimTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1467,12 +1517,16 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
 				);
 				INFOPLIST_FILE = TradeSimTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1507,9 +1561,13 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
 				);
 				INFOPLIST_FILE = TradeSim/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1543,9 +1601,13 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
 				);
 				INFOPLIST_FILE = TradeSim/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1576,11 +1638,15 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
 				);
 				INFOPLIST_FILE = "TradeSim-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1613,11 +1679,15 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
 				);
 				INFOPLIST_FILE = "TradeSim-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1649,11 +1719,15 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
 				);
 				INFOPLIST_FILE = "TradeSim-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1685,11 +1759,15 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
 				);
 				INFOPLIST_FILE = "TradeSim-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (

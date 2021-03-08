@@ -38,6 +38,7 @@ export default class SettingsScreen extends Component {
   }
 
  async onSignOut() { 
+   
    try {
         if(this.props.authstore.user.providerData[0].providerId == 'password') {
             await this.props.authstore.signOut().then( x => {
@@ -50,6 +51,11 @@ export default class SettingsScreen extends Component {
             goToLogin();
           });
         } 
+     if (this.props.authstore.user.providerData[0].providerId == 'twitter.com') {
+       await this.props.authstore.twitterLogout().then(x => {
+         goToLogin();
+       });
+     }
    } catch (error) {
      this.error = error.message;
      console.log("Signout Error: " + error.message)

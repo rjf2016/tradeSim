@@ -27,7 +27,6 @@ export default class SignUpScreen extends Component {
     //1. Register with Firebase
     //2. Send Confirmation     
     this.props.authstore.signUp(username, password).then((userData) => {
-
       goToLogin();
     }
     ).catch((error) => {
@@ -47,12 +46,7 @@ export default class SignUpScreen extends Component {
         <Text style={style.textCaption}>and choose a password.</Text>
         <Text style={[style.textCaption, e]}>{this.state.error}</Text>
         <View style={style.loginContainer}>    
-          <SignUpForm callbackSignUp={this.onSignUpClick} />
-        </View>
-        <View style={{alignItems:'center', bottom: 80}}>
-          <TouchableHighlight onPress={() => goToLogin()}>
-            <Text style={{ color: 'white', fontFamily: 'Avenir-Black' }}> Back to Login </Text>
-          </TouchableHighlight>
+          <SignUpForm callbackSignUp={this.onSignUpClick} callbackReturnToLogin={goToLogin} />
         </View>
       </KeyboardAvoidingView>
 

@@ -18,16 +18,18 @@ componentDidMount() {
 }
   
  numberWithCommas(x) {
-   return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : null
+   return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '0.00'
 }
 
 numberWithPercents(x) {
-  return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "%" : null
+  return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "%" : '0.00%'
 }
 
 performanceData(totalPortfolioValue, todayGain, todayGainPct, totalGain, totalGainPct, collapsed) {
-    if (!totalGain)
+ 
+    if (totalGain==null)
       return null;
+
 
     if (collapsed) {
       let colorTotal = totalGain < 0 ? { color: 'red' } : { color: 'lightgreen' };
@@ -92,10 +94,10 @@ render() {
   const balances = holdingsstore.Balances;
   const b = Object.values(balances);
 
-  if (b === undefined || Object.keys(b) == 0)
-     return this.state.collapse ? this.collapsed(0, 0, 0, 0, 0) : this.expanded(0,0,0,0,0)
-
-  const bal = this.props.holdingsstore.getBalances('Total');  // get the performance information for holdings in this portfolio
+  if (b === undefined || Object.keys(b) == 0) 
+     return this.state.collapse ? this.collapsed(0,0,0,0,0) : this.expanded(0,0,0,0,0)
+  
+     const bal = this.props.holdingsstore.getBalances('Total');  // get the performance information for holdings in this portfolio
 
    if (!this.state.collapse) 
       return this.expanded(bal.totalPortfolioValue, bal.todayGain, bal.todayGainPct, bal.totalGain, bal.totalGainPct);

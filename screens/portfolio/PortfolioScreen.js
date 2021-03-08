@@ -82,6 +82,10 @@ export default class PortfolioScreen extends Component {
   }
   //Called from the overlay confirmation window when user creates the portfolio
   createPortfolio(portfolioName) {
+    if(!portfolioName)
+       return;
+    
+
     this.state.holdingsstore.createPortfolio(portfolioName);
     Navigation.dismissOverlay('CreatePortfolio');
   }
