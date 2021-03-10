@@ -26,11 +26,11 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.googleusercontent.apps.PLACEHOLDER</string>
+			<string>com.googleusercontent.apps.270723734218-9qpt8k4ojicevo9c7fp2dt3bhd9q1c7q</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.PLACEHOLDER</string>
-				<string>twitterkit-PLACEHOLDER</string>
+				<string>com.googleusercontent.apps.270723734218-9qpt8k4ojicevo9c7fp2dt3bhd9q1c7q</string>
+				<string>twitterkit-pfgWlVBePZW2FfxZiAYwMM1FA</string>
 			</array>
 		</dict>
 		<dict>
@@ -52,7 +52,7 @@
 		<string>https://tradesim.net/verify</string>
 	</array>
 	<key>GADApplicationIdentifier</key>
-	<string>PLACEHOLDER-ADMOB</string>
+	<string>ca-app-pub-8142056705160793~5726065280</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>twitter</string>

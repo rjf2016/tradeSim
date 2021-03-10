@@ -16,8 +16,8 @@
 
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 
-@import GoogleMobileAds;
-#import <GoogleMobileAds/GoogleMobileAds.h>
+//@import GoogleMobileAds;
+//#import <GoogleMobileAds/GoogleMobileAds.h>
 
 #import "RNSplashScreen.h"  // here
 
@@ -29,7 +29,7 @@
   NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
   
-  [[GADMobileAds sharedInstance] startWithCompletionHandler:nil];
+  //[[GADMobileAds sharedInstance] startWithCompletionHandler:nil];
   
   [RNSplashScreen show];  
   

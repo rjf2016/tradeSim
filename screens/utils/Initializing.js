@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react'
 import Firebase from 'firebase';
 import { goToLogin } from './Navigation'
 import { goToPortfolioSummary } from './Navigation'
-import SplashScreen from 'react-native-splash-screen';
+
 
 @inject('authstore')
 @observer
@@ -26,7 +26,7 @@ export default class Initializing extends Component {
   }
   
 render() {
-  SplashScreen.hide();
+
   return (
     <View style={{width:'100%', height:'100%', backgroundColor:'black'}}></View>
   );

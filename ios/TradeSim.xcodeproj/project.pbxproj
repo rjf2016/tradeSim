@@ -35,10 +35,6 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		539FDE9D56964B438342BE56 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABCEB4D174D43B1B90E0B85 /* libRNSVG-tvOS.a */; };
 		7A2C873D6120426E9E1C4FDD /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE011D844C461885BBF5E1 /* libRNSVG.a */; };
-		7F176B06232556460017B12C /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F176AD7232556460017B12C /* GoogleMobileAds.framework */; };
-		7F176B07232556460017B12C /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F176B03232556460017B12C /* GoogleUtilities.framework */; };
-		7F176B08232556460017B12C /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F176B04232556460017B12C /* GoogleAppMeasurement.framework */; };
-		7F176B09232556460017B12C /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F176B05232556460017B12C /* nanopb.framework */; };
 		7F66C88025AA49CD0017B6BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F66C85425AA49CD0017B6BE /* Images.xcassets */; };
 		7F66C89425AB6CB30017B6BE /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F66C88E25AB6C030017B6BE /* libSplashScreen.a */; };
 		7F991C1425E5D1E100FDDF8B /* TwitterShareExtensionUIResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F991C1025E5D1E100FDDF8B /* TwitterShareExtensionUIResources.bundle */; };
@@ -57,7 +53,6 @@
 		7FED9D1122D80055008FE3B2 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FED9D0E22D7FDF1008FE3B2 /* libReactNativeNavigation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8C8774BE3331452FB0F6ED75 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4853934C19224BC5A58CB224 /* libRNGoogleSignin.a */; };
-		9C27B7ED473E4128A1C11F57 /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6FD4B374E304A7191340E8D /* libRNAdMobManager.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
@@ -295,13 +290,6 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
-		7F176B9E232588AD0017B12C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E27E770CC68470B843CF26B /* RNAdMobManager.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A96DA7741C146D7200FC639B;
-			remoteInfo = RNAdMobManager;
-		};
 		7F58B62523116881007E0A99 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B55AD5C0522149C1AA9B2C3F /* RNSVG.xcodeproj */;
@@ -420,12 +408,7 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6ABCEB4D174D43B1B90E0B85 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		6C53E8A0162E45D792C06316 /* libRNTwitterSignIn.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNTwitterSignIn.a; sourceTree = "<group>"; };
-		6E27E770CC68470B843CF26B /* RNAdMobManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAdMobManager.xcodeproj; path = "../node_modules/react-native-admob/ios/RNAdMobManager.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		7F176AD7232556460017B12C /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		7F176B03232556460017B12C /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
-		7F176B04232556460017B12C /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		7F176B05232556460017B12C /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		7F66C85425AA49CD0017B6BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TradeSim/Images.xcassets; sourceTree = "<group>"; };
 		7F66C88925AB6C030017B6BE /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		7F991C0E25E5D1E100FDDF8B /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
@@ -447,7 +430,6 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B1777DD90C76464DBC929D38 /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGoogleSignin.xcodeproj; path = "../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; };
 		B55AD5C0522149C1AA9B2C3F /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
-		B6FD4B374E304A7191340E8D /* libRNAdMobManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAdMobManager.a; sourceTree = "<group>"; };
 		E12F5BEA4F4B4E379EBD786D /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCAsyncStorage.a; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -471,17 +453,14 @@
 				7FBFADC922E49EA200886E33 /* SystemConfiguration.framework in Frameworks */,
 				7FBFADC722E49E9300886E33 /* SafariServices.framework in Frameworks */,
 				7FBFADC522E49E8600886E33 /* AddressBook.framework in Frameworks */,
-				7F176B08232556460017B12C /* GoogleAppMeasurement.framework in Frameworks */,
 				7FBFADD322E4AB7800886E33 /* GoogleSignInDependencies.framework in Frameworks */,
 				7FED9D1122D80055008FE3B2 /* libReactNativeNavigation.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				7FA4580625F5739C004EBE3F /* libRNTwitterSignIn.a in Frameworks */,
-				7F176B07232556460017B12C /* GoogleUtilities.framework in Frameworks */,
 				7FBFADD122E4AB7800886E33 /* GoogleSignIn.framework in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
-				7F176B09232556460017B12C /* nanopb.framework in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
@@ -489,14 +468,12 @@
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
-				7F176B06232556460017B12C /* GoogleMobileAds.framework in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				8C8774BE3331452FB0F6ED75 /* libRNGoogleSignin.a in Frameworks */,
 				7A2C873D6120426E9E1C4FDD /* libRNSVG.a in Frameworks */,
 				7F991C1F25E5D27E00FDDF8B /* TwitterCore.framework in Frameworks */,
 				7F991C2025E5D27E00FDDF8B /* TwitterKit.framework in Frameworks */,
-				9C27B7ED473E4128A1C11F57 /* libRNAdMobManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,10 +628,6 @@
 				7F991C0E25E5D1E100FDDF8B /* TwitterKit.framework */,
 				7F991C1125E5D1E100FDDF8B /* TwitterKitResources.bundle */,
 				7F991C1025E5D1E100FDDF8B /* TwitterShareExtensionUIResources.bundle */,
-				7F176B04232556460017B12C /* GoogleAppMeasurement.framework */,
-				7F176AD7232556460017B12C /* GoogleMobileAds.framework */,
-				7F176B03232556460017B12C /* GoogleUtilities.framework */,
-				7F176B05232556460017B12C /* nanopb.framework */,
 				7FBFADCF22E4AB7800886E33 /* GoogleSignIn.bundle */,
 				7FBFADCE22E4AB7800886E33 /* GoogleSignIn.framework */,
 				7FBFADD022E4AB7800886E33 /* GoogleSignInDependencies.framework */,
@@ -683,14 +656,6 @@
 			children = (
 				78C398B91ACF4ADC00677621 /* libRCTLinking.a */,
 				3DAD3E881DF850E9000B6D8A /* libRCTLinking-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7F176B9B232588AC0017B12C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7F176B9F232588AD0017B12C /* libRNAdMobManager.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -736,7 +701,6 @@
 				4853934C19224BC5A58CB224 /* libRNGoogleSignin.a */,
 				83EE011D844C461885BBF5E1 /* libRNSVG.a */,
 				6ABCEB4D174D43B1B90E0B85 /* libRNSVG-tvOS.a */,
-				B6FD4B374E304A7191340E8D /* libRNAdMobManager.a */,
 				6C53E8A0162E45D792C06316 /* libRNTwitterSignIn.a */,
 			);
 			name = "Recovered References";
@@ -770,7 +734,6 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				B1777DD90C76464DBC929D38 /* RNGoogleSignin.xcodeproj */,
 				B55AD5C0522149C1AA9B2C3F /* RNSVG.xcodeproj */,
-				6E27E770CC68470B843CF26B /* RNAdMobManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -988,10 +951,6 @@
 				{
 					ProductGroup = 7FED9CDC22D7FDF1008FE3B2 /* Products */;
 					ProjectRef = 7FED9CDB22D7FDF1008FE3B2 /* ReactNativeNavigation.xcodeproj */;
-				},
-				{
-					ProductGroup = 7F176B9B232588AC0017B12C /* Products */;
-					ProjectRef = 6E27E770CC68470B843CF26B /* RNAdMobManager.xcodeproj */;
 				},
 				{
 					ProductGroup = 7FED9E9122E49C45008FE3B2 /* Products */;
@@ -1238,13 +1197,6 @@
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7F176B9F232588AD0017B12C /* libRNAdMobManager.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNAdMobManager.a;
-			remoteRef = 7F176B9E232588AD0017B12C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		7F58B62623116881007E0A99 /* libRNSVG.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1482,7 +1434,6 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
@@ -1516,7 +1467,6 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
@@ -1559,7 +1509,6 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
@@ -1599,7 +1548,6 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
@@ -1637,7 +1585,6 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
@@ -1678,7 +1625,6 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
@@ -1718,7 +1664,6 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
@@ -1758,7 +1703,6 @@
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-twitter-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-login-twitter/ios/**",
@@ -1830,7 +1774,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1878,7 +1822,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
